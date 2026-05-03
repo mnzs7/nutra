@@ -1,0 +1,22 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(npx skills add https://github.com/anthropics/skills --skill frontend-design 2>&1)",
+      "PowerShell(npx skills add https://github.com/shadcn/ui --skill shadcn 2>&1)",
+      "PowerShell(npx skills add https://github.com/vercel-labs/agent-skills --skill web-design-guidelines 2>&1)",
+      "PowerShell(npx skills add https://github.com/inferen-sh/skills --skill ai-image-generation 2>&1)",
+      "PowerShell(npx skills add https://github.com/inferen-sh/skills --skill nano-banana-2 2>&1)",
+      "PowerShell(npx skills add https://github.com/obra/superpowers --skill brainstorming 2>&1)",
+      "PowerShell(npx skills add https://github.com/anthropics/skills --skill mcp-builder 2>&1)",
+      "PowerShell(npx skills add https://github.com/anthropics/skills --skill webapp-testing 2>&1)",
+      "PowerShell(npx skills add https://github.com/supabase/agent-skills --skill supabase-postgres-best-practices 2>&1)",
+      "PowerShell(npx skills add https://github.com/coreyhaines31/marketingskills --skill copywriting 2>&1)",
+      "PowerShell(npx skills add https://github.com/coreyhaines31/marketingskills --skill content-strategy 2>&1)",
+      "PowerShell(npx skills add https://github.com/anthropics/skills --skill frontend-design --yes --global 2>&1)",
+      "PowerShell(npx skills add https://github.com/shadcn/ui --skill shadcn --yes --global 2>&1)",
+      "PowerShell(npx skills add https://github.com/vercel-labs/agent-skills --skill web-design-guidelines --yes --global 2>&1)",
+      "PowerShell(npx skills add https://github.com/inferen-sh/skills --skill ai-image-generation --yes --global 2>&1)",
+      "PowerShell(npx skills add https://github.com/inferen-sh/skills --skill nano-banana-2 --yes --global 2>&1)"
+    ]
+  }
+}
