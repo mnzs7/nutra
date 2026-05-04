@@ -25,13 +25,13 @@ export function OrderSummary({
     <div className="rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 overflow-hidden">
       <div className="px-5 py-4 border-b border-gray-100 dark:border-gray-700">
         <h3 className="text-base font-bold text-gray-900 dark:text-white">
-          Resumo da Encomenda
+          Resumen del Pedido
         </h3>
       </div>
 
       <div className="p-5">
         {/* Items */}
-        <ul className="space-y-3 mb-4" aria-label="Artigos na encomenda">
+        <ul className="space-y-3 mb-4" aria-label="Artículos en el pedido">
           {items.map((item) => {
             const unitPrice =
               item.subscription === 'monthly'
@@ -53,6 +53,7 @@ export function OrderSummary({
                   <span
                     className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-gray-600 text-[10px] font-bold text-white"
                     aria-label={`${item.quantity} unidades`}
+
                   >
                     {item.quantity}
                   </span>
@@ -63,7 +64,7 @@ export function OrderSummary({
                   </p>
                   {item.subscription === 'monthly' && (
                     <p className="text-xs text-primary-600 dark:text-primary-400">
-                      Subscrição mensal (-15%)
+                      Suscripción mensual (-15%)
                     </p>
                   )}
                 </div>
@@ -82,7 +83,7 @@ export function OrderSummary({
             <span>{formatPrice(subtotal)}</span>
           </div>
           <div className="flex justify-between text-sm text-gray-600 dark:text-gray-300">
-            <span>Envio</span>
+            <span>Envío</span>
             <span
               className={
                 shippingCost === 0
@@ -90,12 +91,12 @@ export function OrderSummary({
                   : ''
               }
             >
-              {shippingCost === 0 ? 'Grátis' : formatPrice(shippingCost)}
+              {shippingCost === 0 ? 'Gratis' : formatPrice(shippingCost)}
             </span>
           </div>
           {discount > 0 && (
             <div className="flex justify-between text-sm text-primary-600 dark:text-primary-400">
-              <span>Desconto</span>
+              <span>Descuento</span>
               <span>-{formatPrice(discount)}</span>
             </div>
           )}
@@ -109,7 +110,7 @@ export function OrderSummary({
         {shipping && !compact && (
           <div className="mt-4 pt-4 border-t border-gray-100 dark:border-gray-700">
             <p className="text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-1.5">
-              Morada de Entrega
+              Dirección de Entrega
             </p>
             <address className="text-sm text-gray-700 dark:text-gray-200 not-italic">
               {shipping.firstName} {shipping.lastName}

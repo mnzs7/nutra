@@ -4,14 +4,14 @@ import bcrypt from 'bcryptjs'
 import { prisma } from '@/lib/prisma'
 
 const registerSchema = z.object({
-  firstName: z.string().min(2, 'Nome deve ter pelo menos 2 caracteres'),
-  lastName: z.string().min(2, 'Apelido deve ter pelo menos 2 caracteres'),
+  firstName: z.string().min(2, 'El nombre debe tener al menos 2 caracteres'),
+  lastName: z.string().min(2, 'Los apellidos deben tener al menos 2 caracteres'),
   email: z.string().email('Email inválido'),
   password: z
     .string()
-    .min(8, 'Palavra-passe deve ter pelo menos 8 caracteres')
-    .regex(/[A-Z]/, 'Deve conter pelo menos uma letra maiúscula')
-    .regex(/[0-9]/, 'Deve conter pelo menos um número'),
+    .min(8, 'La contraseña debe tener al menos 8 caracteres')
+    .regex(/[A-Z]/, 'Debe contener al menos una letra mayúscula')
+    .regex(/[0-9]/, 'Debe contener al menos un número'),
 })
 
 export async function POST(request: NextRequest) {
@@ -35,7 +35,7 @@ export async function POST(request: NextRequest) {
 
     if (existingUser) {
       return NextResponse.json(
-        { error: 'Já existe uma conta com este email' },
+        { error: 'Ya existe una cuenta con este email' },
         { status: 409 }
       )
     }
@@ -58,7 +58,7 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json(
       {
-        message: 'Conta criada com sucesso',
+        message: 'Cuenta creada con éxito',
         user: {
           id: user.id,
           name: user.name,
@@ -69,7 +69,7 @@ export async function POST(request: NextRequest) {
     )
   } catch {
     return NextResponse.json(
-      { error: 'Erro interno do servidor. Tente novamente.' },
+      { error: 'Error interno del servidor. Inténtalo de nuevo.' },
       { status: 500 }
     )
   }

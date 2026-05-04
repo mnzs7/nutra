@@ -19,18 +19,18 @@ export default function CartPage() {
         <div className="flex items-center gap-4 mb-8">
           <Link href="/products">
             <Button variant="ghost" size="sm" leftIcon={<ArrowLeft className="h-4 w-4" />}>
-              Continuar a Comprar
+              Seguir Comprando
             </Button>
           </Link>
           <div className="flex-1">
             <h1 className="text-2xl font-black text-gray-900 dark:text-white flex items-center gap-2">
               <ShoppingCart className="h-6 w-6" aria-hidden="true" />
-              Carrinho de Compras
+              Carrito de Compras
             </h1>
             <p className="text-sm text-gray-500 dark:text-gray-400 mt-0.5" aria-live="polite">
               {items.length === 0
-                ? 'O seu carrinho está vazio'
-                : `${items.reduce((a, i) => a + i.quantity, 0)} ${items.length === 1 ? 'produto' : 'produtos'}`}
+                ? 'Tu carrito está vacío'
+                : `${items.reduce((a, i) => a + i.quantity, 0)} ${items.length === 1 ? 'producto' : 'productos'}`}
             </p>
           </div>
           {items.length > 0 && (
@@ -39,9 +39,9 @@ export default function CartPage() {
               size="sm"
               onClick={clearCart}
               className="text-red-500 hover:text-red-600 hover:bg-red-50 dark:hover:bg-red-900/20"
-              aria-label="Limpar todo o carrinho"
+              aria-label="Vaciar todo el carrito"
             >
-              Limpar carrinho
+              Vaciar carrito
             </Button>
           )}
         </div>
@@ -57,15 +57,15 @@ export default function CartPage() {
               <ShoppingBag className="h-12 w-12 text-gray-300 dark:text-gray-600" aria-hidden="true" />
             </div>
             <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
-              O seu carrinho está vazio
+              Tu carrito está vacío
             </h2>
             <p className="text-gray-500 dark:text-gray-400 mb-8 max-w-sm">
-              Adicione produtos ao carrinho para continuar. Explore a nossa seleção de
+              Añade productos al carrito para continuar. Explora nuestra selección de
               suplementos premium.
             </p>
             <Link href="/products">
               <Button size="lg" leftIcon={<ShoppingCart className="h-5 w-5" />}>
-                Explorar Produtos
+                Explorar Productos
               </Button>
             </Link>
           </motion.div>
@@ -74,7 +74,7 @@ export default function CartPage() {
             {/* Items */}
             <div className="lg:col-span-2">
               <div className="rounded-2xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 p-5">
-                <h2 className="sr-only">Artigos no carrinho</h2>
+                <h2 className="sr-only">Artículos en el carrito</h2>
                 <AnimatePresence mode="popLayout">
                   {items.map((item) => (
                     <CartItem key={`${item.product.id}-${item.subscription}`} item={item} />

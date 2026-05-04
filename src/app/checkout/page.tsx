@@ -46,13 +46,13 @@ export default function CheckoutPage() {
             <Package className="h-8 w-8 text-gray-400" aria-hidden="true" />
           </div>
           <h1 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
-            Carrinho vazio
+            Carrito vacío
           </h1>
           <p className="text-gray-500 dark:text-gray-400 mb-6">
-            Adicione produtos ao carrinho antes de fazer checkout.
+            Añade productos al carrito antes de hacer checkout.
           </p>
           <Link href="/products">
-            <Button>Ver Produtos</Button>
+            <Button>Ver Productos</Button>
           </Link>
         </div>
       </div>
@@ -80,7 +80,7 @@ export default function CheckoutPage() {
     setIsProcessing(false)
 
     window.scrollTo({ top: 0, behavior: 'smooth' })
-    toast.success('Encomenda confirmada!', `Encomenda #${id} recebida com sucesso`)
+    toast.success('¡Pedido confirmado!', `Pedido #${id} recibido con éxito`)
   }
 
   return (
@@ -91,11 +91,11 @@ export default function CheckoutPage() {
           {step !== 'confirmation' && (
             <Link href="/cart" className="inline-flex items-center gap-1.5 text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 mb-4 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 rounded">
               <ArrowLeft className="h-4 w-4" aria-hidden="true" />
-              Voltar ao carrinho
+              Volver al carrito
             </Link>
           )}
           <h1 className="text-2xl font-black text-gray-900 dark:text-white mb-6">
-            {step === 'confirmation' ? 'Encomenda Confirmada!' : 'Checkout'}
+            {step === 'confirmation' ? '¡Pedido Confirmado!' : 'Checkout'}
           </h1>
           {step !== 'confirmation' && <StepIndicator currentStep={step} />}
         </div>
@@ -118,14 +118,14 @@ export default function CheckoutPage() {
               </motion.div>
 
               <h2 className="text-2xl font-black text-gray-900 dark:text-white mb-2">
-                Obrigado pela sua encomenda!
+                ¡Gracias por tu pedido!
               </h2>
               <p className="text-gray-600 dark:text-gray-300 mb-1">
-                Número de encomenda:{' '}
+                Número de pedido:{' '}
                 <strong className="text-gray-900 dark:text-white">#{orderId}</strong>
               </p>
               <p className="text-gray-500 dark:text-gray-400 text-sm">
-                Receberá um email de confirmação em breve com todos os detalhes.
+                Recibirás un email de confirmación en breve con todos los detalles.
               </p>
             </div>
 
@@ -133,10 +133,10 @@ export default function CheckoutPage() {
             {earnedPoints > 0 && (
               <div className="mb-6 p-4 bg-amber-50 dark:bg-amber-900/20 rounded-2xl border border-amber-200 dark:border-amber-800">
                 <p className="text-sm font-medium text-amber-800 dark:text-amber-300">
-                  🏆 Parabéns! Ganhou <strong>{earnedPoints} pontos</strong> com esta encomenda!
+                  🏆 ¡Enhorabuena! Has ganado <strong>{earnedPoints} puntos</strong> con este pedido.
                 </p>
                 <p className="text-xs text-amber-600 dark:text-amber-400 mt-0.5">
-                  Pontos disponíveis na sua próxima compra
+                  Puntos disponibles en tu próxima compra
                 </p>
               </div>
             )}
@@ -146,7 +146,7 @@ export default function CheckoutPage() {
               <div className="mb-6 text-sm text-left p-4 bg-white dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700">
                 <p className="font-medium text-gray-900 dark:text-white mb-1">Entrega prevista:</p>
                 <p className="text-gray-600 dark:text-gray-300">
-                  {new Date(Date.now() + 2 * 24 * 60 * 60 * 1000).toLocaleDateString('pt-PT', {
+                  {new Date(Date.now() + 2 * 24 * 60 * 60 * 1000).toLocaleDateString('es-ES', {
                     weekday: 'long',
                     year: 'numeric',
                     month: 'long',
@@ -164,11 +164,11 @@ export default function CheckoutPage() {
             <div className="flex flex-col gap-3">
               <Link href="/account/orders">
                 <Button fullWidth variant="outline">
-                  Ver As Minhas Encomendas
+                  Ver Mis Pedidos
                 </Button>
               </Link>
               <Link href="/products">
-                <Button fullWidth>Continuar a Comprar</Button>
+                <Button fullWidth>Seguir Comprando</Button>
               </Link>
             </div>
           </motion.div>

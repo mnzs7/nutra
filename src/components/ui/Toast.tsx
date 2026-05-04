@@ -69,7 +69,7 @@ function ToastItem({ toast }: { toast: ToastType }) {
         <button
           onClick={() => removeToast(toast.id)}
           className="shrink-0 ml-auto rounded-lg p-1 text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-400 transition-colors"
-          aria-label="Fechar notificação"
+          aria-label="Cerrar notificación"
         >
           <X className="h-4 w-4" />
         </button>
@@ -84,7 +84,7 @@ export function ToastContainer() {
   return (
     <div
       className="fixed bottom-4 right-4 z-50 flex flex-col gap-2 w-full max-w-sm pointer-events-none"
-      aria-label="Notificações"
+      aria-label="Notificaciones"
     >
       <AnimatePresence mode="sync">
         {toasts.map((toast) => (

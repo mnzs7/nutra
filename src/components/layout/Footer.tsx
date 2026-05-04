@@ -4,29 +4,29 @@ import { Facebook, Instagram, Twitter, Youtube, Mail, Phone, MapPin, Award } fro
 const footerLinks = {
   produtos: [
     { href: '/products?category=vitaminas', label: 'Vitaminas' },
-    { href: '/products?category=proteina', label: 'Proteína' },
-    { href: '/products?category=omega3', label: 'Ómega-3' },
-    { href: '/products?category=pre-treino', label: 'Pré-Treino' },
-    { href: '/products?category=sono', label: 'Sono' },
-    { href: '/products?category=colageno', label: 'Colagénio' },
+    { href: '/products?category=proteina', label: 'Proteínas' },
+    { href: '/products?category=omega3', label: 'Omega-3' },
+    { href: '/products?category=pre-treino', label: 'Pre-Entrenamiento' },
+    { href: '/products?category=sono', label: 'Sueño & Relax' },
+    { href: '/products?category=colageno', label: 'Colágeno & Belleza' },
   ],
   ajuda: [
-    { href: '/faq', label: 'Perguntas Frequentes' },
-    { href: '/shipping', label: 'Envios e Devoluções' },
-    { href: '/about', label: 'Sobre Nós' },
-    { href: '/contact', label: 'Contactos' },
-    { href: '/blog', label: 'Blog de Saúde' },
+    { href: '/faq', label: 'Preguntas Frecuentes' },
+    { href: '/shipping', label: 'Envíos y Devoluciones' },
+    { href: '/about', label: 'Sobre Nosotros' },
+    { href: '/contact', label: 'Contacto' },
+    { href: '/blog', label: 'Blog de Salud' },
   ],
   conta: [
-    { href: '/auth/login', label: 'Iniciar Sessão' },
-    { href: '/auth/register', label: 'Criar Conta' },
-    { href: '/account/orders', label: 'As Minhas Encomendas' },
-    { href: '/account', label: 'Programa de Pontos' },
-    { href: '/quiz', label: 'Quiz de Saúde' },
+    { href: '/auth/login', label: 'Iniciar Sesión' },
+    { href: '/auth/register', label: 'Crear Cuenta' },
+    { href: '/account/orders', label: 'Mis Pedidos' },
+    { href: '/account', label: 'Programa de Puntos' },
+    { href: '/quiz', label: 'Test de Salud' },
   ],
   legal: [
-    { href: '/privacy', label: 'Política de Privacidade' },
-    { href: '/terms', label: 'Termos e Condições' },
+    { href: '/privacy', label: 'Política de Privacidad' },
+    { href: '/terms', label: 'Términos y Condiciones' },
     { href: '/cookies', label: 'Política de Cookies' },
     { href: '/gdpr', label: 'RGPD' },
   ],
@@ -43,7 +43,7 @@ const certifications = [
   'ISO 9001:2015',
   'GMP Certified',
   'EFSA Compliant',
-  'ASAE Registado',
+  'AESAN Registrado',
 ]
 
 export function Footer() {
@@ -53,7 +53,7 @@ export function Footer() {
       aria-labelledby="footer-heading"
     >
       <h2 id="footer-heading" className="sr-only">
-        Rodapé do site
+        Pie de página
       </h2>
 
       <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -74,31 +74,31 @@ export function Footer() {
             </Link>
 
             <p className="text-sm leading-relaxed mb-6 text-gray-400 max-w-xs">
-              A sua loja de confiança para suplementos e produtos de saúde de qualidade.
-              Apoiamos o seu bem-estar com produtos testados e certificados.
+              Tu tienda de confianza para suplementos y productos de salud de calidad.
+              Apoyamos tu bienestar con productos testados y certificados por AESAN.
             </p>
 
             {/* Contact */}
             <div className="space-y-3 mb-6">
               <a
-                href="tel:+351210000000"
+                href="tel:+34910000000"
                 className="flex items-center gap-2.5 text-sm hover:text-primary-400 transition-colors group"
               >
                 <Phone className="h-4 w-4 text-primary-500 shrink-0" aria-hidden="true" />
-                +351 21 000 0000
+                +34 91 000 0000
               </a>
               <a
-                href="mailto:suporte@vitashop.pt"
+                href="mailto:soporte@vitashop.es"
                 className="flex items-center gap-2.5 text-sm hover:text-primary-400 transition-colors"
               >
                 <Mail className="h-4 w-4 text-primary-500 shrink-0" aria-hidden="true" />
-                suporte@vitashop.pt
+                soporte@vitashop.es
               </a>
               <address className="flex items-start gap-2.5 text-sm not-italic">
                 <MapPin className="h-4 w-4 text-primary-500 shrink-0 mt-0.5" aria-hidden="true" />
                 <span className="text-gray-400">
-                  Rua da Saúde, 123<br />
-                  1200-001 Lisboa, Portugal
+                  Calle de la Salud, 123<br />
+                  28001 Madrid, España
                 </span>
               </address>
             </div>
@@ -111,7 +111,7 @@ export function Footer() {
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label={`${label} - abre numa nova janela`}
+                  aria-label={`${label} - abre en una nueva ventana`}
                   className="flex h-9 w-9 items-center justify-center rounded-xl bg-gray-800 text-gray-400 hover:bg-primary-600 hover:text-white transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500"
                 >
                   <Icon className="h-4 w-4" aria-hidden="true" />
@@ -123,7 +123,7 @@ export function Footer() {
           {/* Products */}
           <div>
             <h3 className="text-sm font-semibold uppercase tracking-wider text-white mb-4">
-              Produtos
+              Productos
             </h3>
             <ul className="space-y-2.5">
               {footerLinks.produtos.map(({ href, label }) => (
@@ -142,7 +142,7 @@ export function Footer() {
           {/* Help */}
           <div>
             <h3 className="text-sm font-semibold uppercase tracking-wider text-white mb-4">
-              Ajuda
+              Ayuda
             </h3>
             <ul className="space-y-2.5">
               {footerLinks.ajuda.map(({ href, label }) => (
@@ -161,7 +161,7 @@ export function Footer() {
           {/* Account */}
           <div>
             <h3 className="text-sm font-semibold uppercase tracking-wider text-white mb-4">
-              A Minha Conta
+              Mi Cuenta
             </h3>
             <ul className="space-y-2.5">
               {footerLinks.conta.map(({ href, label }) => (
@@ -196,9 +196,9 @@ export function Footer() {
         {/* Bottom Bar */}
         <div className="py-6 border-t border-gray-800 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs text-gray-500 text-center sm:text-left">
-            &copy; {new Date().getFullYear()} VitaShop. Todos os direitos reservados.
+            &copy; {new Date().getFullYear()} VitaShop. Todos los derechos reservados.
             <span className="mx-2">|</span>
-            <span>NIF: PT123456789</span>
+            <span>NIF: ESA12345678</span>
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-4">
@@ -214,8 +214,8 @@ export function Footer() {
           </div>
 
           {/* Payment methods */}
-          <div className="flex items-center gap-2" aria-label="Métodos de pagamento aceites">
-            {['Visa', 'MC', 'MB', 'MBW', 'PP'].map((method) => (
+          <div className="flex items-center gap-2" aria-label="Métodos de pago aceptados">
+            {['Visa', 'MC', 'Bizum', 'PayPal', '3DS'].map((method) => (
               <span
                 key={method}
                 className="flex h-7 min-w-[40px] items-center justify-center rounded bg-gray-800 px-2 text-[10px] font-bold text-gray-400"

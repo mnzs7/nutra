@@ -17,7 +17,7 @@ export function useCart() {
     subscription: CartItemSubscription = 'once'
   ) => {
     if (product.stock === 0) {
-      toast.error('Produto esgotado', 'Este produto não está disponível de momento.')
+      toast.error('Producto agotado', 'Este producto no está disponible en este momento.')
       return
     }
 
@@ -25,20 +25,20 @@ export function useCart() {
 
     const message =
       subscription === 'monthly'
-        ? `${product.name} adicionado com subscrição mensal (15% desconto)`
-        : `${product.name} adicionado ao carrinho`
+        ? `${product.name} añadido con suscripción mensual (15% descuento)`
+        : `${product.name} añadido al carrito`
 
-    toast.success('Adicionado ao carrinho!', message)
+    toast.success('¡Añadido al carrito!', message)
   }
 
   const removeFromCart = (product: Product) => {
     cart.removeItem(product.id)
-    toast.info('Produto removido', `${product.name} removido do carrinho`)
+    toast.info('Producto eliminado', `${product.name} eliminado del carrito`)
   }
 
   const checkout = (total: number) => {
     const earnedPoints = calculatePoints(total)
-    points.addPoints(earnedPoints, `Compra concluída - ${new Date().toLocaleDateString('pt-PT')}`)
+    points.addPoints(earnedPoints, `Compra completada - ${new Date().toLocaleDateString('es-ES')}`)
     cart.clearCart()
     return earnedPoints
   }

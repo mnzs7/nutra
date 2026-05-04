@@ -64,19 +64,19 @@ export function ProductDetailClient({ product, relatedProducts }: ProductDetailC
   const handleWishlist = () => {
     const added = toggleItem(product)
     toast[added ? 'success' : 'info'](
-      added ? 'Adicionado aos favoritos' : 'Removido dos favoritos',
+      added ? 'Añadido a favoritos' : 'Eliminado de favoritos',
       product.name
     )
   }
 
   const handleCompare = () => {
     if (!inCompare && isFull()) {
-      toast.warning('Limite atingido', 'Máximo 3 produtos no comparador')
+      toast.warning('Límite alcanzado', 'Máximo 3 productos en el comparador')
       return
     }
     const added = toggleCompare(product)
     toast.info(
-      added ? 'Adicionado ao comparador' : 'Removido do comparador',
+      added ? 'Añadido al comparador' : 'Eliminado del comparador',
       product.name
     )
   }
@@ -94,32 +94,32 @@ export function ProductDetailClient({ product, relatedProducts }: ProductDetailC
       }
     } else {
       await navigator.clipboard.writeText(window.location.href)
-      toast.success('Link copiado!', 'O link do produto foi copiado para a área de transferência')
+      toast.success('¡Enlace copiado!', 'El enlace del producto se ha copiado al portapapeles')
     }
   }
 
   const tabs: { id: TabType; label: string }[] = [
-    { id: 'description', label: 'Descrição' },
-    { id: 'nutrition', label: 'Nutrição' },
+    { id: 'description', label: 'Descripción' },
+    { id: 'nutrition', label: 'Nutrición' },
     { id: 'ingredients', label: 'Ingredientes' },
-    { id: 'reviews', label: `Avaliações (${product.reviewsCount.toLocaleString()})` },
+    { id: 'reviews', label: `Reseñas (${product.reviewsCount.toLocaleString()})` },
   ]
 
   return (
     <div className="min-h-screen bg-white dark:bg-gray-950">
       <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8">
         {/* Breadcrumb */}
-        <nav aria-label="Localização atual" className="mb-6">
+        <nav aria-label="Ubicación actual" className="mb-6">
           <ol className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400 flex-wrap">
             <li>
               <Link href="/" className="hover:text-primary-600 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 rounded">
-                Início
+                Inicio
               </Link>
             </li>
             <ChevronRight className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
             <li>
               <Link href="/products" className="hover:text-primary-600 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 rounded">
-                Produtos
+                Productos
               </Link>
             </li>
             <ChevronRight className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
@@ -149,9 +149,9 @@ export function ProductDetailClient({ product, relatedProducts }: ProductDetailC
           >
             {/* Badges */}
             <div className="flex flex-wrap gap-2">
-              {product.isBestSeller && <Badge variant="warning">Mais Vendido</Badge>}
-              {product.isNew && <Badge variant="info">Novo</Badge>}
-              {product.stock === 0 && <Badge variant="danger">Esgotado</Badge>}
+              {product.isBestSeller && <Badge variant="warning">Más Vendido</Badge>}
+              {product.isNew && <Badge variant="info">Nuevo</Badge>}
+              {product.stock === 0 && <Badge variant="danger">Agotado</Badge>}
               {isLowStock && <Badge variant="warning">Últimas {product.stock} unidades</Badge>}
             </div>
 
@@ -180,7 +180,7 @@ export function ProductDetailClient({ product, relatedProducts }: ProductDetailC
                 onClick={() => setActiveTab('reviews')}
                 className="text-sm text-gray-500 dark:text-gray-400 hover:text-primary-600 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 rounded"
               >
-                Ver avaliações
+                Ver reseñas
               </button>
             </div>
 
@@ -192,7 +192,7 @@ export function ProductDetailClient({ product, relatedProducts }: ProductDetailC
             {/* Benefits */}
             <div>
               <h2 className="text-sm font-semibold text-gray-700 dark:text-gray-200 mb-2">
-                Principais benefícios:
+                Principales beneficios:
               </h2>
               <ul className="grid grid-cols-1 sm:grid-cols-2 gap-1.5">
                 {product.benefits.map((benefit) => (
@@ -209,7 +209,7 @@ export function ProductDetailClient({ product, relatedProducts }: ProductDetailC
               <div
                 className="rounded-xl border-2 border-gray-200 dark:border-gray-700 overflow-hidden"
                 role="group"
-                aria-label="Frequência de compra"
+                aria-label="Frecuencia de compra"
               >
                 <div className="grid grid-cols-2">
                   <button
@@ -240,9 +240,9 @@ export function ProductDetailClient({ product, relatedProducts }: ProductDetailC
                     <span className="absolute top-1.5 right-1.5 text-[10px] px-1.5 py-0.5 rounded-full bg-amber-400 text-amber-900 font-bold">
                       -15%
                     </span>
-                    Subscrição Mensal
+                    Suscripción Mensual
                     <div className="text-xs mt-0.5 opacity-80">
-                      {formatPrice(getSubscriptionPrice(product.price))}/mês
+                      {formatPrice(getSubscriptionPrice(product.price))}/mes
                     </div>
                   </button>
                 </div>
@@ -269,17 +269,17 @@ export function ProductDetailClient({ product, relatedProducts }: ProductDetailC
             {/* Quantity */}
             <div className="flex items-center gap-3">
               <label htmlFor="quantity" className="text-sm font-medium text-gray-700 dark:text-gray-200">
-                Quantidade:
+                Cantidad:
               </label>
               <div
                 className="flex items-center rounded-xl border border-gray-300 dark:border-gray-600 overflow-hidden"
                 role="group"
-                aria-label="Selecionar quantidade"
+                aria-label="Seleccionar cantidad"
               >
                 <button
                   onClick={() => setQuantity(Math.max(1, quantity - 1))}
                   className="flex h-10 w-10 items-center justify-center hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-primary-500 transition-colors text-gray-700 dark:text-gray-200"
-                  aria-label="Diminuir quantidade"
+                  aria-label="Reducir cantidad"
                 >
                   −
                 </button>
@@ -291,19 +291,19 @@ export function ProductDetailClient({ product, relatedProducts }: ProductDetailC
                   value={quantity}
                   onChange={(e) => setQuantity(Math.max(1, Math.min(product.stock, Number(e.target.value))))}
                   className="w-12 text-center text-sm font-medium border-x border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500 py-2"
-                  aria-label="Quantidade"
+                  aria-label="Cantidad"
                 />
                 <button
                   onClick={() => setQuantity(Math.min(product.stock, quantity + 1))}
                   disabled={quantity >= product.stock}
                   className="flex h-10 w-10 items-center justify-center hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-primary-500 disabled:opacity-50 disabled:cursor-not-allowed transition-colors text-gray-700 dark:text-gray-200"
-                  aria-label="Aumentar quantidade"
+                  aria-label="Aumentar cantidad"
                 >
                   +
                 </button>
               </div>
               <span className="text-sm text-gray-500 dark:text-gray-400">
-                {product.stock > 0 ? `${product.stock} disponíveis` : 'Esgotado'}
+                {product.stock > 0 ? `${product.stock} disponibles` : 'Agotado'}
               </span>
             </div>
 
@@ -312,7 +312,7 @@ export function ProductDetailClient({ product, relatedProducts }: ProductDetailC
               <div>
                 <p className="text-xs text-amber-600 dark:text-amber-400 mb-1 flex items-center gap-1">
                   <AlertCircle className="h-3.5 w-3.5" aria-hidden="true" />
-                  Atenção: apenas {product.stock} unidades em stock!
+                  ¡Atención: solo {product.stock} unidades en stock!
                 </p>
                 <ProgressBar
                   value={product.stock}
@@ -334,10 +334,10 @@ export function ProductDetailClient({ product, relatedProducts }: ProductDetailC
                 leftIcon={<ShoppingCart className="h-5 w-5" aria-hidden="true" />}
               >
                 {product.stock === 0
-                  ? 'Esgotado'
+                  ? 'Agotado'
                   : inCart
-                  ? 'Adicionado ao Carrinho'
-                  : 'Adicionar ao Carrinho'}
+                  ? 'Añadido al Carrito'
+                  : 'Añadir al Carrito'}
               </Button>
 
               <div className="flex gap-2">
@@ -346,7 +346,7 @@ export function ProductDetailClient({ product, relatedProducts }: ProductDetailC
                   variant="outline"
                   onClick={handleWishlist}
                   aria-pressed={inWishlist}
-                  aria-label={inWishlist ? 'Remover dos favoritos' : 'Adicionar aos favoritos'}
+                  aria-label={inWishlist ? 'Eliminar de favoritos' : 'Añadir a favoritos'}
                   className={cn(inWishlist && 'border-red-300 text-red-500 hover:border-red-400')}
                 >
                   <Heart
@@ -360,7 +360,7 @@ export function ProductDetailClient({ product, relatedProducts }: ProductDetailC
                   variant="outline"
                   onClick={handleCompare}
                   aria-pressed={inCompare}
-                  aria-label={inCompare ? 'Remover do comparador' : 'Adicionar ao comparador'}
+                  aria-label={inCompare ? 'Eliminar del comparador' : 'Añadir al comparador'}
                   className={cn(inCompare && 'border-blue-300 text-blue-500 hover:border-blue-400')}
                 >
                   <BarChart2 className="h-5 w-5" aria-hidden="true" />
@@ -370,7 +370,7 @@ export function ProductDetailClient({ product, relatedProducts }: ProductDetailC
                   size="lg"
                   variant="outline"
                   onClick={handleShare}
-                  aria-label="Partilhar produto"
+                  aria-label="Compartir producto"
                 >
                   <Share2 className="h-5 w-5" aria-hidden="true" />
                 </Button>
@@ -381,11 +381,11 @@ export function ProductDetailClient({ product, relatedProducts }: ProductDetailC
             <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400 bg-amber-50 dark:bg-amber-900/20 rounded-xl p-3">
               <span className="text-base" aria-hidden="true">🏆</span>
               <span>
-                Ganhe{' '}
+                Gana{' '}
                 <strong className="text-amber-700 dark:text-amber-400">
-                  +{Math.floor(currentPrice * quantity)} pontos
+                  +{Math.floor(currentPrice * quantity)} puntos
                 </strong>{' '}
-                com esta compra
+                con esta compra
               </span>
             </div>
 
@@ -396,7 +396,7 @@ export function ProductDetailClient({ product, relatedProducts }: ProductDetailC
                 SKU: {product.sku}
               </span>
               <span>Peso: {product.weight}</span>
-              <span>{product.servings} doses ({product.servingSize})</span>
+              <span>{product.servings} dosis ({product.servingSize})</span>
             </div>
           </motion.div>
         </div>
@@ -406,7 +406,7 @@ export function ProductDetailClient({ product, relatedProducts }: ProductDetailC
           <div
             className="border-b border-gray-200 dark:border-gray-700 mb-6"
             role="tablist"
-            aria-label="Informação do produto"
+            aria-label="Información del producto"
           >
             <div className="flex gap-0 overflow-x-auto scrollbar-hide">
               {tabs.map((tab) => (
@@ -517,7 +517,7 @@ export function ProductDetailClient({ product, relatedProducts }: ProductDetailC
               id="related-heading"
               className="text-2xl font-black text-gray-900 dark:text-white mb-6"
             >
-              Produtos Relacionados
+              Productos Relacionados
             </h2>
             <ProductGrid products={relatedProducts} />
           </section>

@@ -20,19 +20,19 @@ import { formatPrice, pointsToEuro } from '@/lib/utils/formatPrice'
 import { ProgressBar } from '@/components/ui/ProgressBar'
 
 const menuItems = [
-  { href: '/account/orders', Icon: Package, label: 'As Minhas Encomendas', description: '3 encomendas', badge: '3' },
-  { href: '/account/profile', Icon: User, label: 'Perfil e Dados', description: 'Atualizar informações pessoais' },
-  { href: '/account', Icon: MapPin, label: 'Moradas Guardadas', description: '1 morada guardada' },
-  { href: '/account', Icon: Heart, label: 'Lista de Desejos', description: 'Ver favoritos', badge: null },
-  { href: '/account', Icon: Settings, label: 'Configurações', description: 'Preferências e notificações' },
+  { href: '/account/orders', Icon: Package, label: 'Mis Pedidos', description: '3 pedidos', badge: '3' },
+  { href: '/account/profile', Icon: User, label: 'Perfil y Datos', description: 'Actualizar información personal' },
+  { href: '/account', Icon: MapPin, label: 'Direcciones Guardadas', description: '1 dirección guardada' },
+  { href: '/account', Icon: Heart, label: 'Lista de Deseos', description: 'Ver favoritos', badge: null },
+  { href: '/account', Icon: Settings, label: 'Configuración', description: 'Preferencias y notificaciones' },
 ]
 
 // Points tiers
 const TIERS = [
-  { name: 'Bronze', min: 0, max: 500, color: 'text-amber-700', bg: 'bg-amber-100' },
-  { name: 'Prata', min: 500, max: 1500, color: 'text-gray-500', bg: 'bg-gray-100' },
-  { name: 'Ouro', min: 1500, max: 3000, color: 'text-yellow-600', bg: 'bg-yellow-100' },
-  { name: 'Platina', min: 3000, max: Infinity, color: 'text-blue-600', bg: 'bg-blue-100' },
+  { name: 'Bronce', min: 0, max: 500, color: 'text-amber-700', bg: 'bg-amber-100' },
+  { name: 'Plata', min: 500, max: 1500, color: 'text-gray-500', bg: 'bg-gray-100' },
+  { name: 'Oro', min: 1500, max: 3000, color: 'text-yellow-600', bg: 'bg-yellow-100' },
+  { name: 'Platino', min: 3000, max: Infinity, color: 'text-blue-600', bg: 'bg-blue-100' },
 ]
 
 function getCurrentTier(points: number) {
@@ -54,7 +54,7 @@ export default function AccountPage() {
 
   const recentTransactions = transactions.slice(0, 5)
 
-  const userName = session?.user?.name ?? 'Utilizador VitaShop'
+  const userName = session?.user?.name ?? 'Usuario VitaShop'
   const userEmail = session?.user?.email ?? ''
   const firstName = userName.split(' ')[0]
 
@@ -62,7 +62,7 @@ export default function AccountPage() {
     <div className="min-h-screen bg-gray-50 dark:bg-gray-950">
       <div className="container mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-8">
         <h1 className="text-2xl font-black text-gray-900 dark:text-white mb-8">
-          A Minha Conta
+          Mi Cuenta
         </h1>
 
         {/* Welcome + Quick Stats */}
@@ -82,7 +82,7 @@ export default function AccountPage() {
                 )}
               </div>
               <div>
-                <p className="text-sm text-white/80">Bem-vindo de volta,</p>
+                <p className="text-sm text-white/80">Bienvenido de nuevo,</p>
                 <p className="text-xl font-bold">{firstName}</p>
               </div>
             </div>
@@ -90,7 +90,7 @@ export default function AccountPage() {
               {userEmail && (
                 <span className="block truncate">{userEmail}</span>
               )}
-              {transactions.length} transações de pontos
+              {transactions.length} transacciones de puntos
             </p>
           </div>
 
@@ -99,7 +99,7 @@ export default function AccountPage() {
               <div className="flex items-center gap-2">
                 <Award className="h-5 w-5 text-amber-500" aria-hidden="true" />
                 <span className="text-sm font-semibold text-gray-900 dark:text-white">
-                  {balance} pontos
+                  {balance} puntos
                 </span>
               </div>
               <span className={`text-xs font-bold px-2 py-0.5 rounded-full ${currentTier.bg} ${currentTier.color}`}>
@@ -113,7 +113,7 @@ export default function AccountPage() {
               <>
                 <ProgressBar value={balance - currentTier.min} max={nextTier.min - currentTier.min} size="sm" animated={false} />
                 <p className="text-xs text-gray-400 mt-1.5">
-                  {nextTier.min - balance} pontos para {nextTier.name}
+                  {nextTier.min - balance} puntos para {nextTier.name}
                 </p>
               </>
             )}
@@ -124,7 +124,7 @@ export default function AccountPage() {
           {/* Menu */}
           <div className="lg:col-span-2 space-y-3">
             <h2 className="text-sm font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">
-              Menu
+              Menú
             </h2>
             {menuItems.map(({ href, Icon, label, description, badge }) => (
               <Link
@@ -140,8 +140,8 @@ export default function AccountPage() {
                     {label}
                   </p>
                   <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">
-                    {label === 'Lista de Desejos'
-                      ? `${wishlistCount} produto${wishlistCount !== 1 ? 's' : ''}`
+                    {label === 'Lista de Deseos'
+                      ? `${wishlistCount} producto${wishlistCount !== 1 ? 's' : ''}`
                       : description}
                   </p>
                 </div>
@@ -158,12 +158,12 @@ export default function AccountPage() {
           {/* Points History */}
           <div>
             <h2 className="text-sm font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-3">
-              Histórico de Pontos
+              Historial de Puntos
             </h2>
             <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 overflow-hidden">
               {recentTransactions.length === 0 ? (
                 <div className="p-6 text-center text-sm text-gray-500 dark:text-gray-400">
-                  Nenhuma transação ainda
+                  Sin transacciones aún
                 </div>
               ) : (
                 <ul>
@@ -188,12 +188,12 @@ export default function AccountPage() {
                           {txn.description}
                         </p>
                         <p className="text-xs text-gray-400">
-                          {new Date(txn.date).toLocaleDateString('pt-PT')}
+                          {new Date(txn.date).toLocaleDateString('es-ES')}
                         </p>
                       </div>
                       <span
                         className={`text-sm font-bold shrink-0 ${txn.type === 'earned' ? 'text-primary-600' : 'text-red-500'}`}
-                        aria-label={`${txn.type === 'earned' ? 'Ganhou' : 'Usou'} ${txn.points} pontos`}
+                        aria-label={`${txn.type === 'earned' ? 'Ganaste' : 'Usaste'} ${txn.points} puntos`}
                       >
                         {txn.type === 'earned' ? '+' : '-'}{txn.points}
                       </span>

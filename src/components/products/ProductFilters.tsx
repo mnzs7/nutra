@@ -116,9 +116,9 @@ export function ProductFilters({
   const FilterContent = () => (
     <div className="space-y-0">
       {/* Categories */}
-      <FilterSection title="Categorias">
+      <FilterSection title="Categorías">
         <fieldset>
-          <legend className="sr-only">Filtrar por categoria</legend>
+          <legend className="sr-only">Filtrar por categoría</legend>
           <div className="space-y-2">
             {categories.map((cat) => (
               <label
@@ -166,7 +166,7 @@ export function ProductFilters({
       </FilterSection>
 
       {/* Price Range */}
-      <FilterSection title="Preço">
+      <FilterSection title="Precio">
         <div className="space-y-4">
           <div className="flex items-center gap-3">
             <div className="flex-1">
@@ -225,9 +225,9 @@ export function ProductFilters({
       </FilterSection>
 
       {/* Rating */}
-      <FilterSection title="Avaliação Mínima">
+      <FilterSection title="Valoración Mínima">
         <fieldset>
-          <legend className="sr-only">Filtrar por avaliação</legend>
+          <legend className="sr-only">Filtrar por valoración</legend>
           <div className="space-y-2">
             {ratingOptions.map((rating) => (
               <label
@@ -249,7 +249,7 @@ export function ProductFilters({
                 <span className="flex items-center gap-1 text-sm text-gray-700 dark:text-gray-200">
                   {'★'.repeat(rating)}
                   {'☆'.repeat(5 - rating)}
-                  <span className="text-gray-500 dark:text-gray-400">ou mais</span>
+                  <span className="text-gray-500 dark:text-gray-400">o más</span>
                 </span>
               </label>
             ))}
@@ -258,9 +258,9 @@ export function ProductFilters({
       </FilterSection>
 
       {/* Other Filters */}
-      <FilterSection title="Outros Filtros" defaultOpen={false}>
+      <FilterSection title="Otros Filtros" defaultOpen={false}>
         <fieldset>
-          <legend className="sr-only">Outros filtros</legend>
+          <legend className="sr-only">Otros filtros</legend>
           <div className="space-y-2">
             <label className="flex items-center gap-2.5 cursor-pointer group">
               <input
@@ -270,7 +270,7 @@ export function ProductFilters({
                 className="h-4 w-4 rounded border-gray-300 text-primary-600 focus:ring-primary-500"
               />
               <span className="text-sm text-gray-700 dark:text-gray-200 group-hover:text-primary-600 transition-colors">
-                Apenas em stock
+                Solo en stock
               </span>
             </label>
             <label className="flex items-center gap-2.5 cursor-pointer group">
@@ -281,7 +281,7 @@ export function ProductFilters({
                 className="h-4 w-4 rounded border-gray-300 text-primary-600 focus:ring-primary-500"
               />
               <span className="text-sm text-gray-700 dark:text-gray-200 group-hover:text-primary-600 transition-colors">
-                Novidades
+                Novedades
               </span>
             </label>
             <label className="flex items-center gap-2.5 cursor-pointer group">
@@ -294,7 +294,7 @@ export function ProductFilters({
                 className="h-4 w-4 rounded border-gray-300 text-primary-600 focus:ring-primary-500"
               />
               <span className="text-sm text-gray-700 dark:text-gray-200 group-hover:text-primary-600 transition-colors">
-                Mais Vendidos
+                Más Vendidos
               </span>
             </label>
           </div>
@@ -311,7 +311,7 @@ export function ProductFilters({
             onClick={resetFilters}
             leftIcon={<X className="h-3.5 w-3.5" />}
           >
-            Limpar filtros
+            Limpiar filtros
           </Button>
         </div>
       )}
@@ -329,6 +329,7 @@ export function ProductFilters({
           leftIcon={<SlidersHorizontal className="h-4 w-4" />}
         >
           Filtros {hasActiveFilters && <span className="ml-1 text-primary-600">•</span>}
+
         </Button>
       </div>
 
@@ -352,7 +353,7 @@ export function ProductFilters({
               className="fixed left-0 top-0 bottom-0 z-50 w-80 bg-white dark:bg-gray-900 overflow-y-auto p-5 lg:hidden"
               role="dialog"
               aria-modal="true"
-              aria-label="Filtros de produtos"
+              aria-label="Filtros de productos"
             >
               <div className="flex items-center justify-between mb-4">
                 <div>
@@ -360,12 +361,12 @@ export function ProductFilters({
                     Filtros
                   </h2>
                   {productCount !== undefined && (
-                    <p className="text-sm text-gray-500">{productCount} produtos</p>
+                    <p className="text-sm text-gray-500">{productCount} productos</p>
                   )}
                 </div>
                 <button
                   onClick={() => setMobileOpen(false)}
-                  aria-label="Fechar filtros"
+                  aria-label="Cerrar filtros"
                   className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500"
                 >
                   <X className="h-5 w-5" aria-hidden="true" />
@@ -376,6 +377,7 @@ export function ProductFilters({
                 <Button fullWidth onClick={() => setMobileOpen(false)}>
                   Ver {productCount ?? ''} resultados
                 </Button>
+
               </div>
             </motion.div>
           </>
@@ -385,7 +387,7 @@ export function ProductFilters({
       {/* Desktop Sidebar */}
       <aside
         className="hidden lg:block w-64 shrink-0"
-        aria-label="Filtros de produtos"
+        aria-label="Filtros de productos"
       >
         <div className="sticky top-24">
           <div className="flex items-center justify-between mb-2">

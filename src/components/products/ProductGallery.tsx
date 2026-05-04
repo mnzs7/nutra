@@ -41,7 +41,7 @@ export function ProductGallery({ images, productName }: ProductGalleryProps) {
           onKeyDown={handleKeyDown}
           tabIndex={0}
           role="img"
-          aria-label={`${productName} - Imagem ${selectedIndex + 1} de ${images.length}`}
+          aria-label={`${productName} - Imagen ${selectedIndex + 1} de ${images.length}`}
           onClick={() => setLightboxOpen(true)}
         >
           <AnimatePresence mode="wait">
@@ -59,6 +59,7 @@ export function ProductGallery({ images, productName }: ProductGalleryProps) {
               <Image
                 src={images[selectedIndex]}
                 alt={`${productName} - foto ${selectedIndex + 1}`}
+
                 fill
                 sizes="(max-width: 768px) 100vw, 50vw"
                 className={cn(
@@ -89,7 +90,7 @@ export function ProductGallery({ images, productName }: ProductGalleryProps) {
                   'focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500',
                   'transition-all'
                 )}
-                aria-label="Imagem anterior"
+                aria-label="Imagen anterior"
               >
                 <ChevronLeft className="h-4 w-4 text-gray-700 dark:text-gray-200" aria-hidden="true" />
               </button>
@@ -103,7 +104,7 @@ export function ProductGallery({ images, productName }: ProductGalleryProps) {
                   'focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500',
                   'transition-all'
                 )}
-                aria-label="Próxima imagem"
+                aria-label="Siguiente imagen"
               >
                 <ChevronRight className="h-4 w-4 text-gray-700 dark:text-gray-200" aria-hidden="true" />
               </button>
@@ -112,13 +113,13 @@ export function ProductGallery({ images, productName }: ProductGalleryProps) {
 
           {/* Image counter */}
           {images.length > 1 && (
-            <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5" role="tablist" aria-label="Selecionar imagem">
+            <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5" role="tablist" aria-label="Seleccionar imagen">
               {images.map((_, i) => (
                 <button
                   key={i}
                   role="tab"
                   aria-selected={i === selectedIndex}
-                  aria-label={`Imagem ${i + 1}`}
+                  aria-label={`Imagen ${i + 1}`}
                   onClick={(e) => { e.stopPropagation(); setSelectedIndex(i); setImageLoaded(false) }}
                   className={cn(
                     'h-1.5 rounded-full transition-all',
@@ -140,7 +141,7 @@ export function ProductGallery({ images, productName }: ProductGalleryProps) {
                 key={index}
                 role="tab"
                 aria-selected={index === selectedIndex}
-                aria-label={`Ver imagem ${index + 1}`}
+                aria-label={`Ver imagen ${index + 1}`}
                 onClick={() => { setSelectedIndex(index); setImageLoaded(false) }}
                 className={cn(
                   'relative shrink-0 h-20 w-20 overflow-hidden rounded-lg border-2',
@@ -154,6 +155,7 @@ export function ProductGallery({ images, productName }: ProductGalleryProps) {
                 <Image
                   src={src}
                   alt={`${productName} miniatura ${index + 1}`}
+
                   fill
                   sizes="80px"
                   className="object-cover"
@@ -182,7 +184,7 @@ export function ProductGallery({ images, productName }: ProductGalleryProps) {
             <button
               className="absolute top-4 right-4 flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white hover:bg-white/20 focus:outline-none focus-visible:ring-2 focus-visible:ring-white transition-all"
               onClick={() => setLightboxOpen(false)}
-              aria-label="Fechar imagem"
+              aria-label="Cerrar imagen"
             >
               <X className="h-5 w-5" aria-hidden="true" />
             </button>
@@ -192,14 +194,14 @@ export function ProductGallery({ images, productName }: ProductGalleryProps) {
                 <button
                   className="absolute left-4 top-1/2 -translate-y-1/2 flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white hover:bg-white/20 focus:outline-none focus-visible:ring-2 focus-visible:ring-white transition-all"
                   onClick={(e) => { e.stopPropagation(); prevImage() }}
-                  aria-label="Imagem anterior"
+                  aria-label="Imagen anterior"
                 >
                   <ChevronLeft className="h-5 w-5" aria-hidden="true" />
                 </button>
                 <button
                   className="absolute right-4 top-1/2 -translate-y-1/2 flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white hover:bg-white/20 focus:outline-none focus-visible:ring-2 focus-visible:ring-white transition-all"
                   onClick={(e) => { e.stopPropagation(); nextImage() }}
-                  aria-label="Próxima imagem"
+                  aria-label="Siguiente imagen"
                 >
                   <ChevronRight className="h-5 w-5" aria-hidden="true" />
                 </button>

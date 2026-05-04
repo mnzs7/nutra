@@ -8,15 +8,15 @@ import { Button } from '@/components/ui/Button'
 
 const features = [
   { Icon: Shield, text: '100% Certificado' },
-  { Icon: Award, text: 'Qualidade Premium' },
-  { Icon: Truck, text: 'Envio Grátis +€50' },
+  { Icon: Award, text: 'Calidad Premium' },
+  { Icon: Truck, text: 'Envío Gratis +€50' },
 ]
 
 export function Hero() {
   return (
     <section
       className="relative overflow-hidden bg-gradient-to-br from-primary-950 via-primary-800 to-primary-600 text-white"
-      aria-label="Secção principal"
+      aria-label="Sección principal"
     >
       {/* Background pattern */}
       <div className="absolute inset-0 opacity-10" aria-hidden="true">
@@ -36,19 +36,19 @@ export function Hero() {
           >
             <div className="inline-flex items-center gap-2 rounded-full bg-white/10 border border-white/20 px-4 py-1.5 text-sm font-medium mb-6">
               <span className="flex h-2 w-2 rounded-full bg-primary-300 animate-pulse" aria-hidden="true" />
-              Novo: Colagénio VERISOL® disponível
+              Nuevo: Ashwagandha KSM-66® disponible
             </div>
 
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black leading-tight mb-6">
-              O Seu Bem-Estar{' '}
+              Tu Bienestar{' '}
               <span className="text-primary-300">
-                Começa Aqui
+                Empieza Aquí
               </span>
             </h1>
 
             <p className="text-lg sm:text-xl text-white/80 mb-8 max-w-lg leading-relaxed">
-              Suplementos de alta qualidade, testados e certificados, para apoiar os seus
-              objetivos de saúde e bem-estar. Mais de 50.000 clientes satisfeitos.
+              Suplementos de alta calidad, testados y certificados por AESAN, para apoyar tus
+              objetivos de salud y bienestar. Más de 50.000 clientes satisfechos en España.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-3 mb-10">
@@ -58,7 +58,7 @@ export function Hero() {
                   className="bg-white text-primary-800 hover:bg-primary-50 focus-visible:ring-white w-full sm:w-auto"
                   rightIcon={<ArrowRight className="h-5 w-5" />}
                 >
-                  Ver Produtos
+                  Ver Productos
                 </Button>
               </Link>
               <Link href="/quiz">
@@ -67,7 +67,7 @@ export function Hero() {
                   variant="outline"
                   className="border-white/40 text-white hover:bg-white/10 focus-visible:ring-white w-full sm:w-auto"
                 >
-                  Quiz de Saúde
+                  Test de Salud
                 </Button>
               </Link>
             </div>
@@ -98,7 +98,7 @@ export function Hero() {
               <div className="relative aspect-square rounded-3xl overflow-hidden shadow-2xl ring-1 ring-white/10">
                 <Image
                   src="https://picsum.photos/seed/hero-health/600/600"
-                  alt="Suplementos de alta qualidade VitaShop"
+                  alt="Suplementos de alta calidad VitaShop"
                   fill
                   sizes="(max-width: 1024px) 90vw, 45vw"
                   className="object-cover"
@@ -122,9 +122,9 @@ export function Hero() {
                   </div>
                   <div>
                     <p className="text-xs font-semibold text-gray-900 dark:text-white">
-                      4.9/5 estrelas
+                      4.9/5 estrellas
                     </p>
-                    <p className="text-xs text-gray-500">+12.000 avaliações</p>
+                    <p className="text-xs text-gray-500">+12.000 reseñas</p>
                   </div>
                 </div>
               </motion.div>
@@ -142,9 +142,9 @@ export function Hero() {
                   </div>
                   <div>
                     <p className="text-xs font-semibold text-gray-900 dark:text-white">
-                      250 pts grátis
+                      250 pts gratis
                     </p>
-                    <p className="text-xs text-gray-500">na 1ª encomenda</p>
+                    <p className="text-xs text-gray-500">en tu 1.ª compra</p>
                   </div>
                 </div>
               </motion.div>

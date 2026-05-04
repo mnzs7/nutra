@@ -43,7 +43,7 @@ export async function PATCH(request: NextRequest) {
     if (newPassword) {
       if (!currentPassword) {
         return NextResponse.json(
-          { error: 'Palavra-passe atual é obrigatória para alterar a palavra-passe' },
+          { error: 'La contraseña actual es obligatoria para cambiar la contraseña' },
           { status: 400 }
         )
       }
@@ -55,7 +55,7 @@ export async function PATCH(request: NextRequest) {
 
       if (!user?.password) {
         return NextResponse.json(
-          { error: 'Não é possível alterar a palavra-passe de contas OAuth' },
+          { error: 'No es posible cambiar la contraseña de cuentas OAuth' },
           { status: 400 }
         )
       }
@@ -63,7 +63,7 @@ export async function PATCH(request: NextRequest) {
       const passwordMatch = await bcrypt.compare(currentPassword, user.password)
       if (!passwordMatch) {
         return NextResponse.json(
-          { error: 'Palavra-passe atual incorreta' },
+          { error: 'Contraseña actual incorrecta' },
           { status: 400 }
         )
       }

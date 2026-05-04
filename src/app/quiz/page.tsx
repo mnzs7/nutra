@@ -14,65 +14,65 @@ import type { QuizAnswers, QuizGoal, QuizDiet, QuizActivityLevel, Product } from
 const quizSteps = [
   {
     id: 1,
-    question: 'Qual é o seu principal objetivo de saúde?',
-    subtitle: 'Selecione o objetivo que melhor descreve o que procura alcançar',
+    question: '¿Cuál es tu principal objetivo de salud?',
+    subtitle: 'Selecciona el objetivo que mejor describe lo que buscas conseguir',
     field: 'goal' as const,
     options: [
-      { value: 'muscle_gain', label: 'Ganho Muscular', description: 'Aumentar massa muscular e força', icon: '💪' },
-      { value: 'weight_loss', label: 'Perda de Peso', description: 'Reduzir gordura corporal', icon: '⚖️' },
-      { value: 'energy', label: 'Mais Energia', description: 'Combater o cansaço e fadiga', icon: '⚡' },
-      { value: 'immunity', label: 'Imunidade', description: 'Fortalecer o sistema imunitário', icon: '🛡️' },
-      { value: 'sleep', label: 'Melhor Sono', description: 'Adormecer mais fácil e dormir melhor', icon: '🌙' },
-      { value: 'general_health', label: 'Saúde Geral', description: 'Bem-estar e saúde preventiva', icon: '🌿' },
+      { value: 'muscle_gain', label: 'Ganar Músculo', description: 'Aumentar masa muscular y fuerza', icon: '💪' },
+      { value: 'weight_loss', label: 'Perder Peso', description: 'Reducir grasa corporal', icon: '⚖️' },
+      { value: 'energy', label: 'Más Energía', description: 'Combatir el cansancio y la fatiga', icon: '⚡' },
+      { value: 'immunity', label: 'Inmunidad', description: 'Reforzar el sistema inmunitario', icon: '🛡️' },
+      { value: 'sleep', label: 'Mejor Sueño', description: 'Conciliar el sueño más fácil y dormir mejor', icon: '🌙' },
+      { value: 'general_health', label: 'Salud General', description: 'Bienestar y salud preventiva', icon: '🌿' },
     ],
   },
   {
     id: 2,
-    question: 'Qual é o seu tipo de alimentação?',
-    subtitle: 'Isto ajuda-nos a recomendar suplementos compatíveis com a sua dieta',
+    question: '¿Cuál es tu tipo de alimentación?',
+    subtitle: 'Esto nos ayuda a recomendarte suplementos compatibles con tu dieta',
     field: 'diet' as const,
     options: [
-      { value: 'omnivore', label: 'Omnívoro', description: 'Como de tudo, incluindo carne e peixe', icon: '🍗' },
-      { value: 'vegetarian', label: 'Vegetariano', description: 'Não como carne, mas consumo lacticínios/ovos', icon: '🥗' },
-      { value: 'vegan', label: 'Vegano', description: 'Alimentação 100% de origem vegetal', icon: '🌱' },
-      { value: 'gluten_free', label: 'Sem Glúten', description: 'Alimentação sem glúten (intolerância ou opção)', icon: '🌾' },
+      { value: 'omnivore', label: 'Omnívoro', description: 'Como de todo, incluyendo carne y pescado', icon: '🍗' },
+      { value: 'vegetarian', label: 'Vegetariano', description: 'No como carne, pero consumo lácteos/huevos', icon: '🥗' },
+      { value: 'vegan', label: 'Vegano', description: 'Alimentación 100% de origen vegetal', icon: '🌱' },
+      { value: 'gluten_free', label: 'Sin Gluten', description: 'Alimentación sin gluten (intolerancia u opción)', icon: '🌾' },
     ],
   },
   {
     id: 3,
-    question: 'Qual é o seu nível de atividade física?',
-    subtitle: 'A sua rotina de exercício influencia as suas necessidades nutricionais',
+    question: '¿Cuál es tu nivel de actividad física?',
+    subtitle: 'Tu rutina de ejercicio influye en tus necesidades nutricionales',
     field: 'activityLevel' as const,
     options: [
-      { value: 'sedentary', label: 'Sedentário', description: 'Pouco ou nenhum exercício', icon: '🪑' },
-      { value: 'light', label: 'Leve', description: '1-3 dias de exercício por semana', icon: '🚶' },
-      { value: 'moderate', label: 'Moderado', description: '3-5 dias de exercício por semana', icon: '🏃' },
-      { value: 'active', label: 'Ativo', description: '6-7 dias de exercício por semana', icon: '🏋️' },
-      { value: 'very_active', label: 'Muito Ativo', description: 'Atleta ou exercício intenso diário', icon: '🏆' },
+      { value: 'sedentary', label: 'Sedentario', description: 'Poco o ningún ejercicio', icon: '🪑' },
+      { value: 'light', label: 'Ligero', description: '1-3 días de ejercicio por semana', icon: '🚶' },
+      { value: 'moderate', label: 'Moderado', description: '3-5 días de ejercicio por semana', icon: '🏃' },
+      { value: 'active', label: 'Activo', description: '6-7 días de ejercicio por semana', icon: '🏋️' },
+      { value: 'very_active', label: 'Muy Activo', description: 'Atleta o ejercicio intenso diario', icon: '🏆' },
     ],
   },
   {
     id: 4,
-    question: 'Qual a sua faixa etária?',
-    subtitle: 'As necessidades nutricionais variam com a idade',
+    question: '¿Cuál es tu rango de edad?',
+    subtitle: 'Las necesidades nutricionales varían con la edad',
     field: 'age' as const,
     options: [
-      { value: '18-25', label: '18-25 anos', description: 'Crescimento e pico de performance', icon: '🌟' },
-      { value: '26-35', label: '26-35 anos', description: 'Manutenção e produtividade', icon: '✨' },
-      { value: '36-45', label: '36-45 anos', description: 'Vitalidade e prevenção', icon: '⭐' },
-      { value: '46-55', label: '46-55 anos', description: 'Bem-estar e saúde articular', icon: '💫' },
-      { value: '56+', label: '56+ anos', description: 'Longevidade e saúde óssea', icon: '🌺' },
+      { value: '18-25', label: '18-25 años', description: 'Crecimiento y pico de rendimiento', icon: '🌟' },
+      { value: '26-35', label: '26-35 años', description: 'Mantenimiento y productividad', icon: '✨' },
+      { value: '36-45', label: '36-45 años', description: 'Vitalidad y prevención', icon: '⭐' },
+      { value: '46-55', label: '46-55 años', description: 'Bienestar y salud articular', icon: '💫' },
+      { value: '56+', label: '56+ años', description: 'Longevidad y salud ósea', icon: '🌺' },
     ],
   },
   {
     id: 5,
-    question: 'Qual o seu sexo biológico?',
-    subtitle: 'Alguns suplementos têm formulações específicas por sexo',
+    question: '¿Cuál es tu sexo biológico?',
+    subtitle: 'Algunos suplementos tienen formulaciones específicas por sexo',
     field: 'gender' as const,
     options: [
       { value: 'male', label: 'Masculino', description: '', icon: '♂️' },
-      { value: 'female', label: 'Feminino', description: '', icon: '♀️' },
-      { value: 'other', label: 'Prefiro não dizer', description: '', icon: '⭕' },
+      { value: 'female', label: 'Femenino', description: '', icon: '♀️' },
+      { value: 'other', label: 'Prefiero no decirlo', description: '', icon: '⭕' },
     ],
   },
 ]
@@ -111,9 +111,9 @@ function getRecommendations(answers: QuizAnswers): Product[] {
     recommended = recommended.filter(
       (p) =>
         !p.ingredients.some((ing) =>
-          ing.toLowerCase().includes('peixe') ||
-          ing.toLowerCase().includes('leite') ||
-          ing.toLowerCase().includes('whey') ||
+          ing.toLowerCase().includes('pescado') ||
+          ing.toLowerCase().includes('leche') ||
+          ing.toLowerCase().includes('suero') ||
           ing.toLowerCase().includes('gelatina') ||
           ing.toLowerCase().includes('bovino')
         )
@@ -201,14 +201,14 @@ export default function QuizPage() {
             </motion.div>
           </div>
           <h2 className="text-2xl font-black text-gray-900 dark:text-white mb-3">
-            A analisar o seu perfil...
+            Analizando tu perfil...
           </h2>
           <p className="text-gray-500 dark:text-gray-400 max-w-sm mx-auto">
-            Estamos a cruzar as suas respostas com a nossa base de dados para encontrar
-            os suplementos ideais para si.
+            Estamos cruzando tus respuestas con nuestra base de datos para encontrar
+            los suplementos ideales para ti.
           </p>
           <div className="mt-8 space-y-2 max-w-xs mx-auto">
-            {['Analisando objetivos...', 'Verificando dieta...', 'Personalizando recomendações...'].map(
+            {['Analizando objetivos...', 'Verificando dieta...', 'Personalizando recomendaciones...'].map(
               (text, i) => (
                 <motion.div
                   key={text}
@@ -246,11 +246,11 @@ export default function QuizPage() {
                 <span className="text-3xl" aria-hidden="true">🎯</span>
               </div>
               <h1 className="text-3xl font-black text-gray-900 dark:text-white mb-3">
-                As Suas Recomendações Personalizadas
+                Tus Recomendaciones Personalizadas
               </h1>
               <p className="text-gray-500 dark:text-gray-400 max-w-xl mx-auto">
-                Com base no seu perfil, estes são os suplementos que mais se adequam
-                aos seus objetivos e necessidades:
+                Según tu perfil, estos son los suplementos que mejor se adaptan
+                a tus objetivos y necesidades:
               </p>
             </div>
 
@@ -263,7 +263,7 @@ export default function QuizPage() {
             ) : (
               <div className="text-center py-12 mb-10">
                 <p className="text-gray-500 dark:text-gray-400">
-                  Não encontrámos recomendações específicas. Explore os nossos produtos!
+                  No encontramos recomendaciones específicas. ¡Explora nuestros productos!
                 </p>
               </div>
             )}
@@ -274,11 +274,11 @@ export default function QuizPage() {
                 onClick={handleRestart}
                 leftIcon={<RefreshCw className="h-4 w-4" />}
               >
-                Refazer o Quiz
+                Repetir el Test
               </Button>
               <Link href="/products">
                 <Button rightIcon={<ArrowRight className="h-4 w-4" />}>
-                  Ver Todos os Produtos
+                  Ver Todos los Productos
                 </Button>
               </Link>
             </div>
@@ -294,18 +294,18 @@ export default function QuizPage() {
         {/* Header */}
         <div className="text-center mb-8">
           <h1 className="text-3xl font-black text-gray-900 dark:text-white mb-2">
-            Quiz de Saúde Personalizado
+            Test de Salud Personalizado
           </h1>
           <p className="text-gray-500 dark:text-gray-400">
-            Responda a {totalSteps} perguntas para receber recomendações personalizadas
+            Responde {totalSteps} preguntas para recibir recomendaciones personalizadas
           </p>
         </div>
 
         {/* Progress */}
         <div className="mb-8">
           <div className="flex justify-between text-xs text-gray-500 dark:text-gray-400 mb-2">
-            <span>Questão {currentStep + 1} de {totalSteps}</span>
-            <span>{Math.round(((currentStep + 1) / totalSteps) * 100)}% completo</span>
+            <span>Pregunta {currentStep + 1} de {totalSteps}</span>
+            <span>{Math.round(((currentStep + 1) / totalSteps) * 100)}% completado</span>
           </div>
           <div className="h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden" role="progressbar" aria-valuenow={currentStep + 1} aria-valuemin={1} aria-valuemax={totalSteps}>
             <motion.div
@@ -399,6 +399,7 @@ export default function QuizPage() {
             leftIcon={<ArrowLeft className="h-4 w-4" />}
           >
             Anterior
+
           </Button>
           <p className="text-xs text-gray-400">
             {currentStep + 1}/{totalSteps}

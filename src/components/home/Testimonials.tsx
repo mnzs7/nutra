@@ -7,39 +7,39 @@ import { Rating } from '@/components/ui/Rating'
 const testimonials = [
   {
     id: 1,
-    author: 'Ana Rodrigues',
+    author: 'Ana Rodríguez',
     role: 'Personal Trainer',
     avatar: 'https://picsum.photos/seed/ana/100/100',
     rating: 5,
-    text: 'Uso os produtos VitaShop há 2 anos. A qualidade é incomparável e os resultados falam por si. O Whey Protein Isolate é o melhor que já experimentei!',
+    text: 'Llevo 2 años usando los productos VitaShop. La calidad es incomparable y los resultados hablan por sí solos. ¡El Whey Protein Isolate es el mejor que he probado!',
     product: 'Whey Protein Isolate 90%',
   },
   {
     id: 2,
-    author: 'Carlos Mendes',
-    role: 'Médico de Família',
+    author: 'Carlos Méndez',
+    role: 'Médico de Familia',
     avatar: 'https://picsum.photos/seed/carlos/100/100',
     rating: 5,
-    text: 'Recomendo os suplementos VitaShop aos meus doentes. A transparência nos ingredientes e as certificações de qualidade transmitem-me confiança total.',
+    text: 'Recomiendo los suplementos VitaShop a mis pacientes. La transparencia en los ingredientes y las certificaciones de calidad me transmiten total confianza.',
     product: 'Vitamina D3 + K2 Premium',
   },
   {
     id: 3,
-    author: 'Sofia Lima',
+    author: 'Sofía Lima',
     role: 'Nutricionista Clínica',
     avatar: 'https://picsum.photos/seed/sofia/100/100',
     rating: 5,
-    text: 'Como nutricionista, estou muito atenta à qualidade dos suplementos. A VitaShop destaca-se pela rastreabilidade dos ingredientes e ausência de aditivos desnecessários.',
-    product: 'Complexo B Vitamínico',
+    text: 'Como nutricionista, soy muy exigente con la calidad de los suplementos. VitaShop destaca por la trazabilidad de los ingredientes y la ausencia de aditivos innecesarios.',
+    product: 'Complejo B Vitamínico',
   },
   {
     id: 4,
-    author: 'Ricardo Ferreira',
-    role: 'Atleta Profissional',
+    author: 'Ricardo Ferrer',
+    role: 'Atleta Profesional',
     avatar: 'https://picsum.photos/seed/ricardo/100/100',
     rating: 5,
-    text: 'O Pré-Treino Explosive Force transformou os meus treinos. Sem jitters, energia real e sustentada. As doses são eficazes e clinicamente suportadas.',
-    product: 'Pré-Treino Explosive Force',
+    text: 'El Pre-Entrenamiento Explosive Force ha transformado mis entrenos. Sin nerviosismo, energía real y sostenida. Las dosis son eficaces y clínicamente respaldadas.',
+    product: 'Pre-Entrenamiento Explosive Force',
   },
 ]
 
@@ -52,16 +52,16 @@ export function Testimonials() {
       <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <p className="text-sm font-semibold text-primary-600 dark:text-primary-400 mb-1 uppercase tracking-wide">
-            Depoimentos
+            Testimonios
           </p>
           <h2
             id="testimonials-heading"
             className="text-3xl font-black text-gray-900 dark:text-white mb-3"
           >
-            O Que Dizem Os Nossos Clientes
+            Lo Que Dicen Nuestros Clientes
           </h2>
           <p className="text-gray-500 dark:text-gray-400 max-w-xl mx-auto">
-            Mais de 50.000 clientes confiam na VitaShop. Veja algumas das suas experiências.
+            Más de 50.000 clientes confían en VitaShop. Lee algunas de sus experiencias.
           </p>
         </div>
 
@@ -74,7 +74,7 @@ export function Testimonials() {
               viewport={{ once: true }}
               transition={{ delay: index * 0.1, duration: 0.4 }}
               className="relative bg-white dark:bg-gray-800 rounded-2xl p-5 border border-gray-200 dark:border-gray-700 hover:shadow-md transition-all duration-300"
-              aria-label={`Depoimento de ${t.author}`}
+              aria-label={`Testimonio de ${t.author}`}
             >
               <Quote
                 className="h-8 w-8 text-primary-100 dark:text-primary-900/50 mb-3"
@@ -91,7 +91,7 @@ export function Testimonials() {
 
               <footer>
                 <p className="text-xs text-primary-600 dark:text-primary-400 font-medium mb-3">
-                  Produto: {t.product}
+                  Producto: {t.product}
                 </p>
 
                 <div className="flex items-center gap-3">
@@ -121,10 +121,10 @@ export function Testimonials() {
         {/* Stats */}
         <div className="mt-12 grid grid-cols-2 sm:grid-cols-4 gap-6">
           {[
-            { value: '50K+', label: 'Clientes satisfeitos' },
-            { value: '4.9/5', label: 'Avaliação média' },
-            { value: '99%', label: 'Taxa de recomendação' },
-            { value: '30d', label: 'Devolução gratuita' },
+            { value: '50K+', label: 'Clientes satisfechos' },
+            { value: '4.9/5', label: 'Valoración media' },
+            { value: '99%', label: 'Tasa de recomendación' },
+            { value: '30d', label: 'Devolución gratuita' },
           ].map((stat) => (
             <motion.div
               key={stat.label}

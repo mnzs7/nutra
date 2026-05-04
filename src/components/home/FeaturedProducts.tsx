@@ -15,13 +15,13 @@ export function FeaturedProducts() {
         <div className="flex items-end justify-between mb-10">
           <div>
             <p className="text-sm font-semibold text-primary-600 dark:text-primary-400 mb-1 uppercase tracking-wide">
-              Seleção Premium
+              Selección Premium
             </p>
             <h2
               id="featured-heading"
               className="text-3xl font-black text-gray-900 dark:text-white"
             >
-              Produtos em Destaque
+              Productos Destacados
             </h2>
           </div>
           <Link
@@ -52,7 +52,7 @@ export function FeaturedProducts() {
             href="/products"
             className="inline-flex items-center gap-2 text-sm font-semibold text-primary-600 dark:text-primary-400 hover:text-primary-700 transition-colors"
           >
-            Ver todos os produtos
+            Ver todos los productos
             <ArrowRight className="h-4 w-4" aria-hidden="true" />
           </Link>
         </div>

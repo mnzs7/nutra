@@ -32,7 +32,7 @@ export function Rating({
     <div
       className={cn('flex items-center gap-1', className)}
       role={interactive ? 'radiogroup' : 'img'}
-      aria-label={`Avaliação: ${value} de ${max} estrelas${count !== undefined ? `, ${count} avaliações` : ''}`}
+      aria-label={`Valoración: ${value} de ${max} estrellas${count !== undefined ? `, ${count} reseñas` : ''}`}
     >
       <div className="flex items-center gap-0.5">
         {Array.from({ length: max }).map((_, index) => {
@@ -46,7 +46,7 @@ export function Rating({
               type={interactive ? 'button' : undefined}
               onClick={interactive && onChange ? () => onChange(starValue) : undefined}
               disabled={!interactive}
-              aria-label={interactive ? `${starValue} estrelas` : undefined}
+              aria-label={interactive ? `${starValue} estrellas` : undefined}
               role={interactive ? 'radio' : undefined}
               aria-checked={interactive ? starValue === value : undefined}
               className={cn(
@@ -83,7 +83,7 @@ export function Rating({
 
       {count !== undefined && (
         <span className="text-sm text-gray-500 dark:text-gray-400">
-          ({count.toLocaleString('pt-PT')})
+          ({count.toLocaleString('es-ES')})
         </span>
       )}
     </div>

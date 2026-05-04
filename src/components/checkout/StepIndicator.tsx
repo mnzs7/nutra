@@ -3,10 +3,10 @@ import { cn } from '@/lib/utils/cn'
 import type { CheckoutStep } from '@/lib/types'
 
 const steps: { id: CheckoutStep; label: string; number: number }[] = [
-  { id: 'cart', label: 'Carrinho', number: 1 },
-  { id: 'shipping', label: 'Envio', number: 2 },
-  { id: 'payment', label: 'Pagamento', number: 3 },
-  { id: 'confirmation', label: 'Confirmação', number: 4 },
+  { id: 'cart', label: 'Carrito', number: 1 },
+  { id: 'shipping', label: 'Envío', number: 2 },
+  { id: 'payment', label: 'Pago', number: 3 },
+  { id: 'confirmation', label: 'Confirmación', number: 4 },
 ]
 
 interface StepIndicatorProps {
@@ -17,7 +17,7 @@ export function StepIndicator({ currentStep }: StepIndicatorProps) {
   const currentIndex = steps.findIndex((s) => s.id === currentStep)
 
   return (
-    <nav aria-label="Progresso do checkout">
+    <nav aria-label="Progreso del checkout">
       <ol className="flex items-center justify-center gap-0">
         {steps.map((step, index) => {
           const isCompleted = index < currentIndex
@@ -44,7 +44,7 @@ export function StepIndicator({ currentStep }: StepIndicatorProps) {
                     <span aria-hidden="true">{step.number}</span>
                   )}
                   <span className="sr-only">
-                    {isCompleted ? 'Concluído: ' : isActive ? 'Atual: ' : ''}
+                    {isCompleted ? 'Completado: ' : isActive ? 'Actual: ' : ''}
                     {step.label}
                   </span>
                 </div>

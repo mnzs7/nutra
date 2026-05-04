@@ -16,7 +16,7 @@ interface SearchBarProps {
   onClose?: () => void
 }
 
-export function SearchBar({ className, placeholder = 'Pesquisar produtos...', onClose }: SearchBarProps) {
+export function SearchBar({ className, placeholder = 'Buscar productos...', onClose }: SearchBarProps) {
   const router = useRouter()
   const { query, suggestions, isOpen, search, clearSearch, closeSearch } = useSearch()
   const inputRef = useRef<HTMLInputElement>(null)
@@ -56,7 +56,7 @@ export function SearchBar({ className, placeholder = 'Pesquisar produtos...', on
     <div ref={containerRef} className={cn('relative', className)}>
       <form onSubmit={handleSubmit} role="search">
         <label htmlFor="search-input" className="sr-only">
-          Pesquisar produtos
+          Buscar productos
         </label>
         <div className="relative flex items-center">
           <Search
@@ -87,7 +87,7 @@ export function SearchBar({ className, placeholder = 'Pesquisar produtos...', on
               type="button"
               onClick={clearSearch}
               className="absolute right-3 p-0.5 rounded text-gray-400 hover:text-gray-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-400"
-              aria-label="Limpar pesquisa"
+              aria-label="Limpiar búsqueda"
             >
               <X className="h-4 w-4" />
             </button>
@@ -101,7 +101,7 @@ export function SearchBar({ className, placeholder = 'Pesquisar produtos...', on
           <motion.div
             id="search-suggestions"
             role="listbox"
-            aria-label="Sugestões de pesquisa"
+            aria-label="Sugerencias de búsqueda"
             initial={{ opacity: 0, y: -4 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -4 }}
@@ -162,7 +162,7 @@ export function SearchBar({ className, placeholder = 'Pesquisar produtos...', on
                   'transition-colors'
                 )}
               >
-                <span>Ver todos os resultados para &quot;{query}&quot;</span>
+                <span>Ver todos los resultados para &quot;{query}&quot;</span>
                 <ArrowRight className="h-4 w-4" />
               </button>
             </div>

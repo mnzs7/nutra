@@ -26,20 +26,20 @@ import { SearchBar } from '@/components/search/SearchBar'
 import { cn } from '@/lib/utils/cn'
 
 const navLinks = [
-  { href: '/products', label: 'Produtos' },
+  { href: '/products', label: 'Productos' },
   {
     href: '#',
-    label: 'Categorias',
+    label: 'Categorías',
     children: [
       { href: '/products?category=vitaminas', label: 'Vitaminas' },
-      { href: '/products?category=proteina', label: 'Proteína' },
-      { href: '/products?category=omega3', label: 'Ómega-3' },
-      { href: '/products?category=pre-treino', label: 'Pré-Treino' },
-      { href: '/products?category=sono', label: 'Sono' },
-      { href: '/products?category=colageno', label: 'Colagénio' },
+      { href: '/products?category=proteina', label: 'Proteínas' },
+      { href: '/products?category=omega3', label: 'Omega-3' },
+      { href: '/products?category=pre-treino', label: 'Pre-Entrenamiento' },
+      { href: '/products?category=sono', label: 'Sueño & Relax' },
+      { href: '/products?category=colageno', label: 'Colágeno & Belleza' },
     ],
   },
-  { href: '/quiz', label: 'Quiz Saúde' },
+  { href: '/quiz', label: 'Test de Salud' },
   { href: '/compare', label: 'Comparar' },
 ]
 
@@ -103,9 +103,9 @@ export function Header() {
       {/* Announcement bar */}
       <div className="bg-primary-600 text-white text-center text-xs py-2 px-4">
         <p>
-          Envio grátis em encomendas acima de €50 | Pontos de fidelidade em cada compra
+          Envío gratis en pedidos superiores a €50 | Puntos de fidelidad en cada compra
           <Link href="/quiz" className="ml-2 underline font-semibold hover:no-underline">
-            Faça o quiz de saúde
+            Haz el test de salud
           </Link>
         </p>
       </div>
@@ -124,7 +124,7 @@ export function Header() {
             <Link
               href="/"
               className="flex items-center gap-2 shrink-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 rounded-lg"
-              aria-label="VitaShop - Ir para a página inicial"
+              aria-label="VitaShop - Ir a la página de inicio"
             >
               <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-primary-600">
                 <span className="text-white font-bold text-lg" aria-hidden="true">
@@ -139,7 +139,7 @@ export function Header() {
             {/* Desktop Navigation */}
             <nav
               className="hidden lg:flex items-center gap-1"
-              aria-label="Navegação principal"
+              aria-label="Navegación principal"
             >
               {navLinks.map((link) => (
                 <div
@@ -227,7 +227,7 @@ export function Header() {
                   'focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500',
                   'transition-colors'
                 )}
-                aria-label={`${pointsBalance} pontos de fidelidade`}
+                aria-label={`${pointsBalance} puntos de fidelidad`}
               >
                 <Award className="h-4 w-4" aria-hidden="true" />
                 <span>{pointsBalance} pts</span>
@@ -243,7 +243,7 @@ export function Header() {
                     'focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500',
                     'transition-colors'
                   )}
-                  aria-label={theme === 'dark' ? 'Mudar para modo claro' : 'Mudar para modo escuro'}
+                  aria-label={theme === 'dark' ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro'}
                 >
                   {theme === 'dark' ? (
                     <Sun className="h-5 w-5" aria-hidden="true" />
@@ -262,7 +262,7 @@ export function Header() {
                   'focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500',
                   'transition-colors'
                 )}
-                aria-label={`Lista de desejos (${wishlistCount} produtos)`}
+                aria-label={`Lista de deseos (${wishlistCount} productos)`}
               >
                 <Heart className="h-5 w-5" aria-hidden="true" />
                 {wishlistCount > 0 && (
@@ -284,7 +284,7 @@ export function Header() {
                   'focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500',
                   'transition-colors'
                 )}
-                aria-label={`Carrinho de compras (${cartCount} ${cartCount === 1 ? 'produto' : 'produtos'})`}
+                aria-label={`Carrito de compras (${cartCount} ${cartCount === 1 ? 'producto' : 'productos'})`}
               >
                 <ShoppingCart className="h-5 w-5" aria-hidden="true" />
                 <AnimatePresence>
@@ -315,7 +315,7 @@ export function Header() {
                       'focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500',
                       'transition-colors'
                     )}
-                    aria-label="Menu da conta"
+                    aria-label="Menú de la cuenta"
                     aria-expanded={userMenuOpen}
                     aria-haspopup="true"
                   >
@@ -332,7 +332,7 @@ export function Header() {
                       </div>
                     )}
                     <span className="hidden xl:block max-w-[100px] truncate">
-                      {session.user?.name?.split(' ')[0] ?? 'Conta'}
+                      {session.user?.name?.split(' ')[0] ?? 'Cuenta'}
                     </span>
                     <ChevronDown
                       className={cn(
@@ -367,7 +367,7 @@ export function Header() {
                           role="menuitem"
                         >
                           <User className="h-4 w-4" aria-hidden="true" />
-                          A Minha Conta
+                          Mi Cuenta
                         </Link>
                         <Link
                           href="/account/profile"
@@ -376,7 +376,7 @@ export function Header() {
                           role="menuitem"
                         >
                           <Settings className="h-4 w-4" aria-hidden="true" />
-                          Perfil e Dados
+                          Perfil y Datos
                         </Link>
                         <div className="border-t border-gray-100 dark:border-gray-700 mt-1 pt-1">
                           <button
@@ -385,7 +385,7 @@ export function Header() {
                             role="menuitem"
                           >
                             <LogOut className="h-4 w-4" aria-hidden="true" />
-                            Sair
+                            Cerrar sesión
                           </button>
                         </div>
                       </motion.div>
@@ -402,7 +402,7 @@ export function Header() {
                     'focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500',
                     'transition-colors'
                   )}
-                  aria-label="Iniciar sessão"
+                  aria-label="Iniciar sesión"
                 >
                   <User className="h-5 w-5" aria-hidden="true" />
                   <span className="hidden xl:block">Entrar</span>
@@ -420,7 +420,7 @@ export function Header() {
                 )}
                 aria-expanded={mobileOpen}
                 aria-controls="mobile-menu"
-                aria-label={mobileOpen ? 'Fechar menu' : 'Abrir menu'}
+                aria-label={mobileOpen ? 'Cerrar menú' : 'Abrir menú'}
               >
                 {mobileOpen ? (
                   <X className="h-6 w-6" aria-hidden="true" />
@@ -450,7 +450,7 @@ export function Header() {
             >
               <nav
                 className="container mx-auto max-w-7xl px-4 py-4 space-y-1"
-                aria-label="Navegação mobile"
+                aria-label="Navegación móvil"
               >
                 {navLinks.map((link) =>
                   link.children ? (

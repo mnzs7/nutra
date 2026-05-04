@@ -12,26 +12,26 @@ import { Button } from '@/components/ui/Button'
 import { useToastStore } from '@/lib/store/toastStore'
 
 const profileSchema = z.object({
-  firstName: z.string().min(2, 'Nome deve ter pelo menos 2 caracteres'),
-  lastName: z.string().min(2, 'Apelido deve ter pelo menos 2 caracteres'),
+  firstName: z.string().min(2, 'El nombre debe tener al menos 2 caracteres'),
+  lastName: z.string().min(2, 'Los apellidos deben tener al menos 2 caracteres'),
   email: z.string().email('Email inválido'),
-  phone: z.string().min(9, 'Telefone inválido').optional().or(z.literal('')),
+  phone: z.string().min(9, 'Teléfono inválido').optional().or(z.literal('')),
   birthDate: z.string().optional(),
   newsletter: z.boolean(),
 })
 
 const passwordSchema = z
   .object({
-    currentPassword: z.string().min(1, 'Palavra-passe atual é obrigatória'),
+    currentPassword: z.string().min(1, 'La contraseña actual es obligatoria'),
     newPassword: z
       .string()
-      .min(8, 'Palavra-passe deve ter pelo menos 8 caracteres')
-      .regex(/[A-Z]/, 'Deve conter pelo menos uma letra maiúscula')
-      .regex(/[0-9]/, 'Deve conter pelo menos um número'),
+      .min(8, 'La contraseña debe tener al menos 8 caracteres')
+      .regex(/[A-Z]/, 'Debe contener al menos una letra mayúscula')
+      .regex(/[0-9]/, 'Debe contener al menos un número'),
     confirmNewPassword: z.string(),
   })
   .refine((d) => d.newPassword === d.confirmNewPassword, {
-    message: 'As palavras-passe não coincidem',
+    message: 'Las contraseñas no coinciden',
     path: ['confirmNewPassword'],
   })
 
@@ -100,14 +100,13 @@ export default function ProfilePage() {
     const json = await response.json()
 
     if (!response.ok) {
-      toast.error('Erro ao guardar', json.error ?? 'Tente novamente')
+      toast.error('Error al guardar', json.error ?? 'Inténtalo de nuevo')
       return
     }
 
-    // Update session to reflect new name
     await update({ name: fullName })
     reset({ ...data })
-    toast.success('Perfil atualizado', 'As suas informações foram guardadas com sucesso')
+    toast.success('Perfil actualizado', 'Tu información se ha guardado correctamente')
   }
 
   const onSubmitPassword = async (data: PasswordFormData) => {
@@ -124,13 +123,13 @@ export default function ProfilePage() {
     const json = await response.json()
 
     if (!response.ok) {
-      toast.error('Erro ao alterar palavra-passe', json.error ?? 'Tente novamente')
+      toast.error('Error al cambiar la contraseña', json.error ?? 'Inténtalo de nuevo')
       return
     }
 
     resetPw()
     setShowPasswordSection(false)
-    toast.success('Palavra-passe alterada', 'A sua palavra-passe foi atualizada com sucesso')
+    toast.success('Contraseña cambiada', 'Tu contraseña se ha actualizado correctamente')
   }
 
   return (
@@ -139,15 +138,15 @@ export default function ProfilePage() {
         <div className="flex items-center gap-4 mb-8">
           <Link href="/account">
             <Button variant="ghost" size="sm" leftIcon={<ArrowLeft className="h-4 w-4" />}>
-              Voltar
+              Volver
             </Button>
           </Link>
           <div>
             <h1 className="text-2xl font-black text-gray-900 dark:text-white">
-              Perfil e Dados Pessoais
+              Perfil y Datos Personales
             </h1>
             <p className="text-sm text-gray-500 dark:text-gray-400 mt-0.5">
-              Gerir as suas informações pessoais
+              Gestiona tu información personal
             </p>
           </div>
         </div>
@@ -169,7 +168,7 @@ export default function ProfilePage() {
             </div>
             <div>
               <p className="text-base font-bold text-gray-900 dark:text-white">
-                {session?.user?.name ?? 'Utilizador'}
+                {session?.user?.name ?? 'Usuario'}
               </p>
               <p className="text-sm text-gray-500 dark:text-gray-400">
                 {userEmail}
@@ -180,14 +179,14 @@ export default function ProfilePage() {
           <form onSubmit={handleSubmit(onSubmitProfile)} noValidate className="space-y-5">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <Input
-                label="Nome"
+                label="Nombre"
                 required
                 {...register('firstName')}
                 error={errors.firstName?.message}
                 autoComplete="given-name"
               />
               <Input
-                label="Apelido"
+                label="Apellidos"
                 required
                 {...register('lastName')}
                 error={errors.lastName?.message}
@@ -203,11 +202,11 @@ export default function ProfilePage() {
               error={errors.email?.message}
               autoComplete="email"
               disabled
-              hint="O email não pode ser alterado"
+              hint="El email no se puede cambiar"
             />
 
             <Input
-              label="Telefone"
+              label="Teléfono"
               type="tel"
               {...register('phone')}
               error={errors.phone?.message}
@@ -215,7 +214,7 @@ export default function ProfilePage() {
             />
 
             <Input
-              label="Data de Nascimento"
+              label="Fecha de Nacimiento"
               type="date"
               {...register('birthDate')}
               error={errors.birthDate?.message}
@@ -231,10 +230,10 @@ export default function ProfilePage() {
                 />
                 <div>
                   <span className="text-sm font-medium text-gray-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
-                    Subscrever newsletter
+                    Suscribirse al boletín
                   </span>
                   <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">
-                    Receber dicas de saúde, novidades e ofertas exclusivas por email
+                    Recibir consejos de salud, novedades y ofertas exclusivas por email
                   </p>
                 </div>
               </label>
@@ -247,7 +246,7 @@ export default function ProfilePage() {
                 disabled={!isDirty}
                 leftIcon={<Save className="h-4 w-4" />}
               >
-                Guardar Alterações
+                Guardar Cambios
               </Button>
             </div>
           </form>
@@ -256,7 +255,7 @@ export default function ProfilePage() {
           <div className="mt-8 pt-6 border-t border-gray-200 dark:border-gray-700">
             <div className="flex items-center justify-between mb-4">
               <h2 className="text-base font-bold text-gray-900 dark:text-white">
-                Segurança
+                Seguridad
               </h2>
             </div>
 
@@ -267,12 +266,12 @@ export default function ProfilePage() {
                 leftIcon={<Lock className="h-4 w-4" />}
                 onClick={() => setShowPasswordSection(true)}
               >
-                Alterar palavra-passe
+                Cambiar contraseña
               </Button>
             ) : (
               <form onSubmit={handleSubmitPw(onSubmitPassword)} noValidate className="space-y-4">
                 <Input
-                  label="Palavra-passe atual"
+                  label="Contraseña actual"
                   type={showCurrentPw ? 'text' : 'password'}
                   required
                   {...registerPw('currentPassword')}
@@ -292,7 +291,7 @@ export default function ProfilePage() {
                 />
 
                 <Input
-                  label="Nova palavra-passe"
+                  label="Nueva contraseña"
                   type={showNewPw ? 'text' : 'password'}
                   required
                   {...registerPw('newPassword')}
@@ -312,7 +311,7 @@ export default function ProfilePage() {
                 />
 
                 <Input
-                  label="Confirmar nova palavra-passe"
+                  label="Confirmar nueva contraseña"
                   type={showConfirmPw ? 'text' : 'password'}
                   required
                   {...registerPw('confirmNewPassword')}
@@ -338,7 +337,7 @@ export default function ProfilePage() {
                     isLoading={isPwSubmitting}
                     leftIcon={<Save className="h-4 w-4" />}
                   >
-                    Guardar palavra-passe
+                    Guardar contraseña
                   </Button>
                   <Button
                     type="button"
@@ -359,13 +358,13 @@ export default function ProfilePage() {
           {/* Danger Zone */}
           <div className="mt-6 pt-6 border-t border-red-100 dark:border-red-900/30">
             <h2 className="text-base font-bold text-red-600 dark:text-red-400 mb-2">
-              Zona de Perigo
+              Zona de Peligro
             </h2>
             <p className="text-sm text-gray-500 dark:text-gray-400 mb-3">
-              Apagar a sua conta é uma ação irreversível. Todos os seus dados serão eliminados.
+              Eliminar tu cuenta es una acción irreversible. Todos tus datos serán borrados permanentemente.
             </p>
             <Button variant="danger" size="sm">
-              Eliminar conta
+              Eliminar cuenta
             </Button>
           </div>
         </div>

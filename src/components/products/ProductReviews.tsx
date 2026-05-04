@@ -46,7 +46,7 @@ function ReviewCard({ review }: { review: Review }) {
               dateTime={review.date}
               className="text-xs text-gray-400 dark:text-gray-500 ml-auto"
             >
-              {new Date(review.date).toLocaleDateString('pt-PT', {
+              {new Date(review.date).toLocaleDateString('es-ES', {
                 year: 'numeric',
                 month: 'long',
                 day: 'numeric',
@@ -66,7 +66,7 @@ function ReviewCard({ review }: { review: Review }) {
 
       <button className="mt-3 flex items-center gap-1.5 text-xs text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 rounded">
         <ThumbsUp className="h-3.5 w-3.5" aria-hidden="true" />
-        Útil?
+        ¿Útil?
       </button>
     </motion.div>
   )
@@ -96,13 +96,13 @@ export function ProductReviews({
         id="reviews-heading"
         className="text-xl font-bold text-gray-900 dark:text-white mb-6"
       >
-        Avaliações dos Clientes
+        Reseñas de Clientes
       </h2>
 
       {reviews.length === 0 ? (
         <div className="text-center py-12 text-gray-500 dark:text-gray-400">
-          <p className="text-lg font-medium mb-1">Ainda sem avaliações</p>
-          <p className="text-sm">Seja o primeiro a avaliar este produto!</p>
+          <p className="text-lg font-medium mb-1">Sin reseñas aún</p>
+          <p className="text-sm">¡Sé el primero en reseñar este producto!</p>
         </div>
       ) : (
         <>
@@ -115,7 +115,7 @@ export function ProductReviews({
               </span>
               <Rating value={rating} size="lg" className="my-2" />
               <span className="text-sm text-gray-500 dark:text-gray-400">
-                {reviewsCount.toLocaleString('pt-PT')} avaliações
+                {reviewsCount.toLocaleString('es-ES')} reseñas
               </span>
             </div>
 
@@ -156,8 +156,8 @@ export function ProductReviews({
                 aria-expanded={showAll}
               >
                 {showAll
-                  ? 'Ver menos avaliações'
-                  : `Ver todas as ${reviews.length} avaliações`}
+                  ? 'Ver menos reseñas'
+                  : `Ver las ${reviews.length} reseñas`}
               </Button>
             </div>
           )}

@@ -9,34 +9,35 @@ import './globals.css'
 
 export const metadata: Metadata = {
   title: {
-    default: 'VitaShop - Suplementos e Farmácia Online',
+    default: 'VitaShop - Suplementos y Parafarmacia Online',
     template: '%s | VitaShop',
   },
   description:
-    'A sua loja de suplementos e produtos de saúde online. Vitaminas, proteínas, ómega-3, pré-treino, sono e colagénio de alta qualidade certificados.',
+    'Tu tienda de suplementos y productos de salud online en España. Vitaminas, proteínas, omega-3, pre-entrenamiento, sueño y colágeno de alta calidad certificados por AESAN.',
   keywords: [
     'suplementos',
     'vitaminas',
     'proteína',
     'omega-3',
-    'pré-treino',
-    'saúde',
-    'bem-estar',
-    'farmácia online',
-    'Portugal',
+    'pre-entrenamiento',
+    'salud',
+    'bienestar',
+    'parafarmacia online',
+    'España',
+    'nutraceuticos',
   ],
   authors: [{ name: 'VitaShop' }],
   creator: 'VitaShop',
   publisher: 'VitaShop',
-  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL ?? 'https://vitashop.pt'),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL ?? 'https://vitashop.es'),
   openGraph: {
     type: 'website',
-    locale: 'pt_PT',
+    locale: 'es_ES',
     url: '/',
     siteName: 'VitaShop',
-    title: 'VitaShop - Suplementos e Farmácia Online',
+    title: 'VitaShop - Suplementos y Parafarmacia Online',
     description:
-      'A sua loja de suplementos e produtos de saúde online em Portugal. Qualidade certificada.',
+      'Tu tienda de suplementos y productos de salud online en España. Calidad certificada por AESAN.',
     images: [
       {
         url: '/og-image.jpg',
@@ -48,8 +49,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'VitaShop - Suplementos e Farmácia Online',
-    description: 'A sua loja de suplementos e produtos de saúde online em Portugal.',
+    title: 'VitaShop - Suplementos y Parafarmacia Online',
+    description: 'Tu tienda de suplementos y productos de salud online en España.',
     images: ['/og-image.jpg'],
   },
   robots: {
@@ -89,7 +90,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="pt-PT" suppressHydrationWarning>
+    <html lang="es-ES" suppressHydrationWarning>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
@@ -100,7 +101,7 @@ export default function RootLayout({
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
             {/* Skip to content - accessibility */}
             <a href="#main-content" className="skip-to-content">
-              Ir para o conteúdo principal
+              Ir al contenido principal
             </a>
 
             <Header />

@@ -15,22 +15,22 @@ import { useToastStore } from '@/lib/store/toastStore'
 
 const registerSchema = z
   .object({
-    firstName: z.string().min(2, 'Nome deve ter pelo menos 2 caracteres'),
-    lastName: z.string().min(2, 'Apelido deve ter pelo menos 2 caracteres'),
+    firstName: z.string().min(2, 'El nombre debe tener al menos 2 caracteres'),
+    lastName: z.string().min(2, 'Los apellidos deben tener al menos 2 caracteres'),
     email: z.string().email('Email inválido'),
     password: z
       .string()
-      .min(8, 'Palavra-passe deve ter pelo menos 8 caracteres')
-      .regex(/[A-Z]/, 'Deve conter pelo menos uma letra maiúscula')
-      .regex(/[0-9]/, 'Deve conter pelo menos um número'),
+      .min(8, 'La contraseña debe tener al menos 8 caracteres')
+      .regex(/[A-Z]/, 'Debe contener al menos una letra mayúscula')
+      .regex(/[0-9]/, 'Debe contener al menos un número'),
     confirmPassword: z.string(),
     acceptTerms: z.boolean().refine((v) => v === true, {
-      message: 'Deve aceitar os Termos e Condições',
+      message: 'Debes aceptar los Términos y Condiciones',
     }),
     newsletter: z.boolean(),
   })
   .refine((d) => d.password === d.confirmPassword, {
-    message: 'As palavras-passe não coincidem',
+    message: 'Las contraseñas no coinciden',
     path: ['confirmPassword'],
   })
 
@@ -87,7 +87,7 @@ export default function RegisterPage() {
       const json = await response.json()
 
       if (!response.ok) {
-        toast.error('Erro ao criar conta', json.error ?? 'Tente novamente')
+        toast.error('Error al crear la cuenta', json.error ?? 'Inténtalo de nuevo')
         return
       }
 
@@ -100,17 +100,17 @@ export default function RegisterPage() {
 
       if (signInResult?.ok) {
         toast.success(
-          'Conta criada com sucesso!',
-          'Recebeu 250 pontos de boas-vindas. Bem-vindo à VitaShop!'
+          '¡Cuenta creada con éxito!',
+          'Has recibido 250 puntos de bienvenida. ¡Bienvenido a VitaShop!'
         )
         router.push('/account')
         router.refresh()
       } else {
-        toast.success('Conta criada!', 'Pode agora iniciar sessão.')
+        toast.success('¡Cuenta creada!', 'Ya puedes iniciar sesión.')
         router.push('/auth/login')
       }
     } catch {
-      toast.error('Erro de rede', 'Verifique a sua ligação e tente novamente')
+      toast.error('Error de red', 'Verifica tu conexión e inténtalo de nuevo')
     }
   }
 
@@ -132,15 +132,15 @@ export default function RegisterPage() {
             </span>
           </Link>
           <h1 className="mt-6 text-2xl font-black text-gray-900 dark:text-white">
-            Criar Conta Grátis
+            Crear Cuenta Gratis
           </h1>
           <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
-            Já tem conta?{' '}
+            ¿Ya tienes cuenta?{' '}
             <Link
               href="/auth/login"
               className="font-semibold text-primary-600 dark:text-primary-400 hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 rounded"
             >
-              Iniciar sessão
+              Iniciar sesión
             </Link>
           </p>
         </div>
@@ -152,10 +152,10 @@ export default function RegisterPage() {
           </div>
           <div>
             <p className="text-sm font-semibold text-amber-800 dark:text-amber-300">
-              250 pontos de boas-vindas!
+              ¡250 puntos de bienvenida!
             </p>
             <p className="text-xs text-amber-600 dark:text-amber-400">
-              Equivalente a €2,50 em descontos
+              Equivale a €2,50 en descuentos
             </p>
           </div>
         </div>
@@ -165,8 +165,8 @@ export default function RegisterPage() {
           <form onSubmit={handleSubmit(onSubmit)} noValidate className="space-y-4">
             <div className="grid grid-cols-2 gap-4">
               <Input
-                label="Nome"
-                placeholder="João"
+                label="Nombre"
+                placeholder="Carlos"
                 required
                 {...register('firstName')}
                 error={errors.firstName?.message}
@@ -174,8 +174,8 @@ export default function RegisterPage() {
                 leftIcon={<User className="h-4 w-4" aria-hidden="true" />}
               />
               <Input
-                label="Apelido"
-                placeholder="Silva"
+                label="Apellidos"
+                placeholder="García"
                 required
                 {...register('lastName')}
                 error={errors.lastName?.message}
@@ -186,7 +186,7 @@ export default function RegisterPage() {
             <Input
               label="Email"
               type="email"
-              placeholder="o.seu@email.pt"
+              placeholder="tu@email.es"
               required
               {...register('email')}
               error={errors.email?.message}
@@ -195,7 +195,7 @@ export default function RegisterPage() {
             />
 
             <Input
-              label="Palavra-passe"
+              label="Contraseña"
               type={showPassword ? 'text' : 'password'}
               placeholder="Mínimo 8 caracteres"
               required
@@ -208,7 +208,7 @@ export default function RegisterPage() {
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
                   className="focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 rounded"
-                  aria-label={showPassword ? 'Ocultar palavra-passe' : 'Mostrar palavra-passe'}
+                  aria-label={showPassword ? 'Ocultar contraseña' : 'Mostrar contraseña'}
                 >
                   {showPassword
                     ? <EyeOff className="h-4 w-4 text-gray-400" />
@@ -220,7 +220,7 @@ export default function RegisterPage() {
 
             {/* Password strength indicator */}
             {password.length > 0 && (
-              <div className="space-y-1.5" aria-live="polite" aria-label="Força da palavra-passe">
+              <div className="space-y-1.5" aria-live="polite" aria-label="Seguridad de la contraseña">
                 <div className="flex gap-1">
                   {[1, 2, 3, 4].map((level) => (
                     <div
@@ -242,7 +242,7 @@ export default function RegisterPage() {
                 <div className="flex flex-wrap gap-x-3 gap-y-1">
                   {[
                     { ok: strength.hasLength, label: '8+ caracteres' },
-                    { ok: strength.hasUpper, label: 'Maiúscula' },
+                    { ok: strength.hasUpper, label: 'Mayúscula' },
                     { ok: strength.hasNumber, label: 'Número' },
                     { ok: strength.hasSpecial, label: 'Símbolo' },
                   ].map(({ ok, label }) => (
@@ -258,9 +258,9 @@ export default function RegisterPage() {
             )}
 
             <Input
-              label="Confirmar Palavra-passe"
+              label="Confirmar Contraseña"
               type={showConfirm ? 'text' : 'password'}
-              placeholder="Repetir palavra-passe"
+              placeholder="Repetir contraseña"
               required
               {...register('confirmPassword')}
               error={errors.confirmPassword?.message}
@@ -271,7 +271,7 @@ export default function RegisterPage() {
                   type="button"
                   onClick={() => setShowConfirm(!showConfirm)}
                   className="focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 rounded"
-                  aria-label={showConfirm ? 'Ocultar confirmação' : 'Mostrar confirmação'}
+                  aria-label={showConfirm ? 'Ocultar confirmación' : 'Mostrar confirmación'}
                 >
                   {showConfirm
                     ? <EyeOff className="h-4 w-4 text-gray-400" />
@@ -291,13 +291,13 @@ export default function RegisterPage() {
                     className="mt-0.5 h-4 w-4 rounded border-gray-300 text-primary-600 focus:ring-primary-500"
                   />
                   <span className="text-sm text-gray-600 dark:text-gray-300">
-                    Aceito os{' '}
+                    Acepto los{' '}
                     <Link href="/terms" className="text-primary-600 dark:text-primary-400 hover:underline">
-                      Termos e Condições
+                      Términos y Condiciones
                     </Link>{' '}
-                    e a{' '}
+                    y la{' '}
                     <Link href="/privacy" className="text-primary-600 dark:text-primary-400 hover:underline">
-                      Política de Privacidade
+                      Política de Privacidad
                     </Link>{' '}
                     <span className="text-red-500" aria-hidden="true">*</span>
                   </span>
@@ -316,7 +316,7 @@ export default function RegisterPage() {
                   className="mt-0.5 h-4 w-4 rounded border-gray-300 text-primary-600 focus:ring-primary-500"
                 />
                 <span className="text-sm text-gray-600 dark:text-gray-300">
-                  Quero receber dicas de saúde e ofertas exclusivas (opcional)
+                  Quiero recibir consejos de salud y ofertas exclusivas (opcional)
                 </span>
               </label>
             </div>
@@ -329,7 +329,7 @@ export default function RegisterPage() {
               rightIcon={<ArrowRight className="h-4 w-4" />}
               className="mt-2"
             >
-              Criar Conta
+              Crear Cuenta
             </Button>
           </form>
         </div>

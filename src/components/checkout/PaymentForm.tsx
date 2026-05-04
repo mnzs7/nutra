@@ -15,14 +15,14 @@ type PaymentMethod = 'credit_card' | 'mbway' | 'multibanco' | 'paypal'
 const cardSchema = z.object({
   cardNumber: z
     .string()
-    .regex(/^\d{4} \d{4} \d{4} \d{4}$/, 'Número de cartão inválido'),
-  cardHolder: z.string().min(3, 'Nome no cartão obrigatório'),
-  expiryDate: z.string().regex(/^\d{2}\/\d{2}$/, 'Data inválida (MM/AA)'),
+    .regex(/^\d{4} \d{4} \d{4} \d{4}$/, 'Número de tarjeta inválido'),
+  cardHolder: z.string().min(3, 'Nombre en la tarjeta obligatorio'),
+  expiryDate: z.string().regex(/^\d{2}\/\d{2}$/, 'Fecha inválida (MM/AA)'),
   cvv: z.string().regex(/^\d{3,4}$/, 'CVV inválido'),
 })
 
 const mbwaySchema = z.object({
-  mbwayPhone: z.string().regex(/^9\d{8}$/, 'Número de telemóvel inválido'),
+  mbwayPhone: z.string().regex(/^[6-7]\d{8}$/, 'Número de móvil inválido'),
 })
 
 type CardFormData = z.infer<typeof cardSchema>
@@ -42,20 +42,20 @@ const paymentMethods: {
 }[] = [
   {
     id: 'credit_card',
-    label: 'Cartão de Crédito / Débito',
+    label: 'Tarjeta de Crédito / Débito',
     description: 'Visa, Mastercard, American Express',
     Icon: CreditCard,
   },
   {
     id: 'mbway',
-    label: 'MB WAY',
-    description: 'Pagamento por telemóvel',
+    label: 'Bizum',
+    description: 'Pago por móvil instantáneo',
     Icon: Smartphone,
   },
   {
     id: 'multibanco',
-    label: 'Multibanco',
-    description: 'Referência ATM gerada',
+    label: 'Transferencia Bancaria',
+    description: 'Datos bancarios generados al confirmar',
     Icon: Building,
   },
 ]
@@ -118,16 +118,16 @@ export function PaymentForm({ onSubmit, onBack, isSubmitting }: PaymentFormProps
     <div className="space-y-6">
       <div>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-1">
-          Método de Pagamento
+          Método de Pago
         </h2>
         <p className="text-sm text-gray-500 dark:text-gray-400">
-          Selecione como pretende pagar a sua encomenda.
+          Selecciona cómo quieres pagar tu pedido.
         </p>
       </div>
 
       {/* Payment Method Selector */}
       <fieldset>
-        <legend className="sr-only">Selecionar método de pagamento</legend>
+        <legend className="sr-only">Seleccionar método de pago</legend>
         <div className="space-y-3">
           {paymentMethods.map(({ id, label, description, Icon }) => (
             <label
@@ -190,11 +190,11 @@ export function PaymentForm({ onSubmit, onBack, isSubmitting }: PaymentFormProps
         <div className="space-y-4 p-4 bg-gray-50 dark:bg-gray-800/50 rounded-xl border border-gray-200 dark:border-gray-700">
           <div className="flex items-center gap-2 text-sm font-medium text-gray-700 dark:text-gray-200">
             <Lock className="h-4 w-4 text-primary-600" aria-hidden="true" />
-            Ligação segura SSL/TLS
+            Conexión segura SSL/TLS
           </div>
 
           <Input
-            label="Número do Cartão"
+            label="Número de Tarjeta"
             placeholder="4111 1111 1111 1111"
             required
             {...cardForm.register('cardNumber')}
@@ -209,8 +209,8 @@ export function PaymentForm({ onSubmit, onBack, isSubmitting }: PaymentFormProps
           />
 
           <Input
-            label="Nome no Cartão"
-            placeholder="JOÃO A SILVA"
+            label="Nombre en la Tarjeta"
+            placeholder="CARLOS A GARCÍA"
             required
             {...cardForm.register('cardHolder')}
             onChange={(e) => cardForm.setValue('cardHolder', e.target.value.toUpperCase())}
@@ -220,7 +220,7 @@ export function PaymentForm({ onSubmit, onBack, isSubmitting }: PaymentFormProps
 
           <div className="grid grid-cols-2 gap-4">
             <Input
-              label="Validade (MM/AA)"
+              label="Caducidad (MM/AA)"
               placeholder="12/27"
               required
               {...cardForm.register('expiryDate')}
@@ -249,15 +249,15 @@ export function PaymentForm({ onSubmit, onBack, isSubmitting }: PaymentFormProps
         </div>
       )}
 
-      {/* MB WAY Form */}
+      {/* Bizum Form */}
       {selectedMethod === 'mbway' && (
         <div className="p-4 bg-gray-50 dark:bg-gray-800/50 rounded-xl border border-gray-200 dark:border-gray-700">
           <p className="text-sm text-gray-600 dark:text-gray-300 mb-4">
-            Receberá um pedido de pagamento na aplicação MB WAY associada ao número indicado.
+            Recibirás una solicitud de pago en la app Bizum asociada al número indicado.
           </p>
           <Input
-            label="Número de Telemóvel"
-            placeholder="912 345 678"
+            label="Número de Móvil"
+            placeholder="612 345 678"
             required
             {...mbwayForm.register('mbwayPhone')}
             error={mbwayForm.formState.errors.mbwayPhone?.message}
@@ -269,13 +269,12 @@ export function PaymentForm({ onSubmit, onBack, isSubmitting }: PaymentFormProps
         </div>
       )}
 
-      {/* Multibanco */}
+      {/* Transferencia Bancaria */}
       {selectedMethod === 'multibanco' && (
         <div className="p-4 bg-blue-50 dark:bg-blue-900/20 rounded-xl border border-blue-200 dark:border-blue-800">
           <p className="text-sm text-blue-700 dark:text-blue-300">
-            Após confirmar a encomenda, ser-lhe-ão fornecidos os dados de pagamento Multibanco
-            (Entidade, Referência e Valor). A encomenda será processada assim que o pagamento
-            for confirmado (até 48 horas úteis).
+            Tras confirmar el pedido, recibirás los datos bancarios para realizar la transferencia.
+            El pedido se procesará una vez confirmado el pago (hasta 48 horas hábiles).
           </p>
         </div>
       )}
@@ -287,7 +286,7 @@ export function PaymentForm({ onSubmit, onBack, isSubmitting }: PaymentFormProps
           onClick={onBack}
           leftIcon={<ChevronLeft className="h-4 w-4" />}
         >
-          Voltar ao Envio
+          Volver al Envío
         </Button>
         <Button
           size="lg"
@@ -296,7 +295,7 @@ export function PaymentForm({ onSubmit, onBack, isSubmitting }: PaymentFormProps
           rightIcon={<ChevronRight className="h-5 w-5" />}
           className="sm:shrink-0"
         >
-          Confirmar Pagamento
+          Confirmar Pago
         </Button>
       </div>
     </div>

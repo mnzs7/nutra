@@ -16,7 +16,7 @@ import { Suspense } from 'react'
 
 const loginSchema = z.object({
   email: z.string().email('Email inválido'),
-  password: z.string().min(6, 'Palavra-passe deve ter pelo menos 6 caracteres'),
+  password: z.string().min(6, 'La contraseña debe tener al menos 6 caracteres'),
   rememberMe: z.boolean(),
 })
 
@@ -46,12 +46,12 @@ function LoginForm() {
     })
 
     if (result?.error) {
-      toast.error('Erro ao iniciar sessão', 'Email ou palavra-passe incorretos')
+      toast.error('Error al iniciar sesión', 'Email o contraseña incorrectos')
       return
     }
 
     if (result?.ok) {
-      toast.success('Sessão iniciada!', 'Bem-vindo de volta à VitaShop')
+      toast.success('¡Sesión iniciada!', 'Bienvenido de nuevo a VitaShop')
       router.push(callbackUrl)
       router.refresh()
     }
@@ -79,15 +79,15 @@ function LoginForm() {
             </span>
           </Link>
           <h1 className="mt-6 text-2xl font-black text-gray-900 dark:text-white">
-            Iniciar Sessão
+            Iniciar Sesión
           </h1>
           <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
-            Não tem conta?{' '}
+            ¿No tienes cuenta?{' '}
             <Link
               href="/auth/register"
               className="font-semibold text-primary-600 dark:text-primary-400 hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 rounded"
             >
-              Criar conta grátis
+              Crear cuenta gratis
             </Link>
           </p>
         </div>
@@ -99,7 +99,7 @@ function LoginForm() {
             <button
               className="flex w-full items-center justify-center gap-3 rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 px-4 py-2.5 text-sm font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 transition-all"
               type="button"
-              aria-label="Entrar com Google"
+              aria-label="Entrar con Google"
               onClick={handleGoogleSignIn}
             >
               <svg className="h-5 w-5" viewBox="0 0 24 24" aria-hidden="true">
@@ -108,7 +108,7 @@ function LoginForm() {
                 <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
                 <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
               </svg>
-              Entrar com Google
+              Entrar con Google
             </button>
           </div>
 
@@ -117,7 +117,7 @@ function LoginForm() {
               <div className="w-full border-t border-gray-200 dark:border-gray-700" />
             </div>
             <div className="relative flex justify-center text-xs text-gray-500 dark:text-gray-400">
-              <span className="bg-white dark:bg-gray-800 px-3">ou com email</span>
+              <span className="bg-white dark:bg-gray-800 px-3">o con email</span>
             </div>
           </div>
 
@@ -126,7 +126,7 @@ function LoginForm() {
             <Input
               label="Email"
               type="email"
-              placeholder="o.seu@email.pt"
+              placeholder="tu@email.es"
               required
               {...register('email')}
               error={errors.email?.message}
@@ -135,7 +135,7 @@ function LoginForm() {
             />
 
             <Input
-              label="Palavra-passe"
+              label="Contraseña"
               type={showPassword ? 'text' : 'password'}
               placeholder="••••••••"
               required
@@ -148,7 +148,7 @@ function LoginForm() {
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
                   className="focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 rounded"
-                  aria-label={showPassword ? 'Ocultar palavra-passe' : 'Mostrar palavra-passe'}
+                  aria-label={showPassword ? 'Ocultar contraseña' : 'Mostrar contraseña'}
                 >
                   {showPassword
                     ? <EyeOff className="h-4 w-4 text-gray-400" />
@@ -165,13 +165,13 @@ function LoginForm() {
                   {...register('rememberMe')}
                   className="h-4 w-4 rounded border-gray-300 text-primary-600 focus:ring-primary-500"
                 />
-                <span className="text-sm text-gray-600 dark:text-gray-300">Lembrar-me</span>
+                <span className="text-sm text-gray-600 dark:text-gray-300">Recuérdame</span>
               </label>
               <Link
                 href="/auth/forgot-password"
                 className="text-sm font-medium text-primary-600 dark:text-primary-400 hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 rounded"
               >
-                Esqueceu a palavra-passe?
+                ¿Olvidaste tu contraseña?
               </Link>
             </div>
 
@@ -182,19 +182,19 @@ function LoginForm() {
               isLoading={isSubmitting}
               rightIcon={<ArrowRight className="h-4 w-4" />}
             >
-              Iniciar Sessão
+              Iniciar Sesión
             </Button>
           </form>
         </div>
 
         <p className="mt-6 text-center text-xs text-gray-400 dark:text-gray-500">
-          Ao iniciar sessão, aceita os nossos{' '}
+          Al iniciar sesión, aceptas nuestros{' '}
           <Link href="/terms" className="underline hover:text-gray-600 dark:hover:text-gray-300">
-            Termos e Condições
+            Términos y Condiciones
           </Link>{' '}
-          e{' '}
+          y{' '}
           <Link href="/privacy" className="underline hover:text-gray-600 dark:hover:text-gray-300">
-            Política de Privacidade
+            Política de Privacidad
           </Link>
           .
         </p>

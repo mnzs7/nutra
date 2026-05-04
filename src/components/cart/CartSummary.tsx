@@ -27,16 +27,16 @@ export function CartSummary() {
     if (!couponInput.trim()) return
     const success = cart.applyCoupon(couponInput)
     if (success) {
-      toast.success('Cupão aplicado!', `Desconto de ${Math.round(cart.discount * 100)}% adicionado`)
+      toast.success('¡Cupón aplicado!', `Descuento del ${Math.round(cart.discount * 100)}% añadido`)
       setCouponInput('')
     } else {
-      toast.error('Cupão inválido', 'O código inserido não é válido ou já expirou')
+      toast.error('Cupón inválido', 'El código introducido no es válido o ha expirado')
     }
   }
 
   const handleApplyPoints = () => {
     if (points.balance < 100) {
-      toast.warning('Pontos insuficientes', 'Precisa de pelo menos 100 pontos (€1) para usar')
+      toast.warning('Puntos insuficientes', 'Necesitas al menos 100 puntos (€1) para usar')
       return
     }
 
@@ -45,29 +45,29 @@ export function CartSummary() {
     const roundedPoints = Math.floor(maxPointsToUse / 100) * 100 // Round to nearest 100
 
     if (roundedPoints === 0) {
-      toast.warning('Pontos insuficientes', 'Não tem pontos suficientes para redimir')
+      toast.warning('Puntos insuficientes', 'No tienes suficientes puntos para canjear')
       return
     }
 
     cart.applyPoints(roundedPoints)
     setAppliedPoints(roundedPoints)
     toast.success(
-      `${roundedPoints} pontos aplicados`,
-      `Desconto de ${formatPrice(pointsToEuro(roundedPoints))} na sua encomenda`
+      `${roundedPoints} puntos aplicados`,
+      `Descuento de ${formatPrice(pointsToEuro(roundedPoints))} en tu pedido`
     )
   }
 
   const handleRemovePoints = () => {
     cart.removePoints()
     setAppliedPoints(0)
-    toast.info('Pontos removidos', 'Os pontos foram removidos da encomenda')
+    toast.info('Puntos eliminados', 'Los puntos han sido eliminados del pedido')
   }
 
   return (
     <div className="rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 overflow-hidden">
       <div className="p-5 border-b border-gray-100 dark:border-gray-700">
         <h2 className="text-lg font-bold text-gray-900 dark:text-white">
-          Resumo da Encomenda
+          Resumen del Pedido
         </h2>
       </div>
 
@@ -84,13 +84,13 @@ export function CartSummary() {
 
           {shippingCost > 0 ? (
             <div className="flex justify-between text-sm text-gray-600 dark:text-gray-300">
-              <span>Envio</span>
+              <span>Envío</span>
               <span>{formatPrice(shippingCost)}</span>
             </div>
           ) : (
             <div className="flex justify-between text-sm text-primary-600 dark:text-primary-400">
-              <span>Envio</span>
-              <span className="font-medium">Grátis</span>
+              <span>Envío</span>
+              <span className="font-medium">Gratis</span>
             </div>
           )}
 
@@ -98,13 +98,13 @@ export function CartSummary() {
             <div className="flex justify-between text-sm text-primary-600 dark:text-primary-400">
               <span className="flex items-center gap-1">
                 <Tag className="h-3.5 w-3.5" aria-hidden="true" />
-                Cupão ({cart.couponCode})
+                Cupón ({cart.couponCode})
               </span>
               <div className="flex items-center gap-1">
                 <span>-{formatPrice(subtotal * cart.discount)}</span>
                 <button
                   onClick={cart.removeCoupon}
-                  aria-label="Remover cupão"
+                  aria-label="Eliminar cupón"
                   className="text-gray-400 hover:text-red-500 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 rounded"
                 >
                   <X className="h-3 w-3" aria-hidden="true" />
@@ -117,13 +117,13 @@ export function CartSummary() {
             <div className="flex justify-between text-sm text-amber-600 dark:text-amber-400">
               <span className="flex items-center gap-1">
                 <Coins className="h-3.5 w-3.5" aria-hidden="true" />
-                Pontos ({cart.pointsApplied} pts)
+                Puntos ({cart.pointsApplied} pts)
               </span>
               <div className="flex items-center gap-1">
                 <span>-{formatPrice(pointsToEuro(cart.pointsApplied))}</span>
                 <button
                   onClick={handleRemovePoints}
-                  aria-label="Remover pontos"
+                  aria-label="Eliminar puntos"
                   className="text-gray-400 hover:text-red-500 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 rounded"
                 >
                   <X className="h-3 w-3" aria-hidden="true" />
@@ -143,11 +143,11 @@ export function CartSummary() {
           <div className="pt-2">
             <div className="flex gap-2">
               <Input
-                placeholder="Código de desconto"
+                placeholder="Código de descuento"
                 value={couponInput}
                 onChange={(e) => setCouponInput(e.target.value.toUpperCase())}
                 onKeyDown={(e) => e.key === 'Enter' && handleApplyCoupon()}
-                aria-label="Inserir código de desconto"
+                aria-label="Introducir código de descuento"
                 leftIcon={<Tag className="h-4 w-4" aria-hidden="true" />}
                 containerClassName="flex-1"
               />
@@ -161,7 +161,7 @@ export function CartSummary() {
               </Button>
             </div>
             <p className="mt-1 text-xs text-gray-400">
-              Experimente: VITA10, SAVE15, WELCOME20
+              Prueba: VITA10, SAVE15, WELCOME20
             </p>
           </div>
         )}
@@ -172,10 +172,10 @@ export function CartSummary() {
             <div className="flex items-center justify-between gap-2">
               <div>
                 <p className="text-xs font-medium text-amber-800 dark:text-amber-300">
-                  Tem {points.balance} pontos disponíveis
+                  Tienes {points.balance} puntos disponibles
                 </p>
                 <p className="text-xs text-amber-600 dark:text-amber-400">
-                  = {formatPrice(pointsToEuro(points.balance))} de desconto
+                  = {formatPrice(pointsToEuro(points.balance))} de descuento
                 </p>
               </div>
               <Button
@@ -185,7 +185,7 @@ export function CartSummary() {
                 leftIcon={<Coins className="h-3.5 w-3.5" aria-hidden="true" />}
                 className="bg-amber-100 text-amber-800 hover:bg-amber-200 dark:bg-amber-900/40 dark:text-amber-300"
               >
-                Usar pontos
+                Usar puntos
               </Button>
             </div>
           </div>
@@ -193,21 +193,21 @@ export function CartSummary() {
 
         {/* Points earned preview */}
         <p className="text-xs text-center text-gray-500 dark:text-gray-400">
-          Esta encomenda vale{' '}
+          Este pedido vale{' '}
           <span className="font-semibold text-amber-600 dark:text-amber-400">
-            +{Math.floor(total)} pontos
+            +{Math.floor(total)} puntos
           </span>
         </p>
 
         {/* Checkout button */}
         <Link href="/checkout">
           <Button fullWidth size="lg" rightIcon={<ChevronRight className="h-5 w-5" />}>
-            Finalizar Encomenda
+            Finalizar Pedido
           </Button>
         </Link>
 
         <p className="text-xs text-center text-gray-400">
-          Pagamento seguro com SSL · Devolução gratuita em 30 dias
+          Pago seguro con SSL · Devolución gratuita en 30 días
         </p>
       </div>
     </div>

@@ -7,9 +7,9 @@ import { Testimonials } from '@/components/home/Testimonials'
 import { Newsletter } from '@/components/home/Newsletter'
 
 export const metadata: Metadata = {
-  title: 'VitaShop - Suplementos Premium de Saúde e Bem-Estar',
+  title: 'VitaShop - Suplementos Premium de Salud y Bienestar',
   description:
-    'Compre suplementos e vitaminas de alta qualidade na VitaShop. Entrega em 24-48h, devolução gratuita em 30 dias e programa de fidelidade.',
+    'Compra suplementos y vitaminas de alta calidad en VitaShop. Entrega en 24-48h, devolución gratuita en 30 días y programa de fidelidad.',
 }
 
 export default function HomePage() {

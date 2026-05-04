@@ -24,7 +24,7 @@ export function CartItem({ item }: CartItemProps) {
 
   const handleRemove = () => {
     removeItem(product.id)
-    toast.info('Produto removido', `${product.name} removido do carrinho`)
+    toast.info('Producto eliminado', `${product.name} eliminado del carrito`)
   }
 
   const handleDecrement = () => {
@@ -37,7 +37,7 @@ export function CartItem({ item }: CartItemProps) {
 
   const handleIncrement = () => {
     if (quantity >= product.stock) {
-      toast.warning('Stock insuficiente', `Apenas ${product.stock} unidades disponíveis`)
+      toast.warning('Stock insuficiente', `Solo ${product.stock} unidades disponibles`)
       return
     }
     updateQuantity(product.id, quantity + 1)
@@ -47,10 +47,10 @@ export function CartItem({ item }: CartItemProps) {
     const newSub = subscription === 'monthly' ? 'once' : 'monthly'
     updateSubscription(product.id, newSub)
     toast.info(
-      newSub === 'monthly' ? 'Subscrição ativada' : 'Subscrição desativada',
+      newSub === 'monthly' ? 'Suscripción activada' : 'Suscripción desactivada',
       newSub === 'monthly'
-        ? '15% de desconto ativado para este produto'
-        : 'Compra única selecionada'
+        ? '15% de descuento activado para este producto'
+        : 'Compra única seleccionada'
     )
   }
 
@@ -92,7 +92,7 @@ export function CartItem({ item }: CartItemProps) {
           </div>
           <button
             onClick={handleRemove}
-            aria-label={`Remover ${product.name} do carrinho`}
+            aria-label={`Eliminar ${product.name} del carrito`}
             className="shrink-0 p-1.5 rounded-lg text-gray-400 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 transition-all"
           >
             <Trash2 className="h-4 w-4" aria-hidden="true" />
@@ -114,7 +114,7 @@ export function CartItem({ item }: CartItemProps) {
             aria-pressed={subscription === 'monthly'}
           >
             <RefreshCw className="h-3 w-3" aria-hidden="true" />
-            {subscription === 'monthly' ? 'Subscrição mensal (-15%)' : 'Compra única - ativar subscrição?'}
+            {subscription === 'monthly' ? 'Suscripción mensual (-15%)' : 'Compra única - ¿activar suscripción?'}
           </button>
         )}
 
@@ -124,12 +124,12 @@ export function CartItem({ item }: CartItemProps) {
           <div
             className="flex items-center gap-1 rounded-lg border border-gray-200 dark:border-gray-700"
             role="group"
-            aria-label={`Quantidade de ${product.name}`}
+            aria-label={`Cantidad de ${product.name}`}
           >
             <button
               onClick={handleDecrement}
               className="flex h-7 w-7 items-center justify-center rounded-l-lg hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-inset transition-colors"
-              aria-label="Diminuir quantidade"
+              aria-label="Reducir cantidad"
             >
               <Minus className="h-3 w-3 text-gray-600 dark:text-gray-300" aria-hidden="true" />
             </button>
@@ -137,6 +137,7 @@ export function CartItem({ item }: CartItemProps) {
               className="min-w-[28px] text-center text-sm font-medium text-gray-900 dark:text-white"
               aria-live="polite"
               aria-label={`${quantity} unidades`}
+
             >
               {quantity}
             </span>
@@ -144,7 +145,7 @@ export function CartItem({ item }: CartItemProps) {
               onClick={handleIncrement}
               disabled={quantity >= product.stock}
               className="flex h-7 w-7 items-center justify-center rounded-r-lg hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-inset disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
-              aria-label="Aumentar quantidade"
+              aria-label="Aumentar cantidad"
             >
               <Plus className="h-3 w-3 text-gray-600 dark:text-gray-300" aria-hidden="true" />
             </button>

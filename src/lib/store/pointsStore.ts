@@ -24,7 +24,7 @@ export const usePointsStore = create<PointsStore>()(
         {
           id: 'initial',
           date: new Date().toISOString(),
-          description: 'Bónus de boas-vindas',
+          description: 'Bono de bienvenida',
           points: 250,
           type: 'earned',
         },

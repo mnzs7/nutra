@@ -90,10 +90,10 @@ function ProductsContent() {
       {/* Header */}
       <div className="mb-6">
         <h1 className="text-2xl font-black text-gray-900 dark:text-white">
-          {query ? `Resultados para "${query}"` : 'Todos os Produtos'}
+          {query ? `Resultados para "${query}"` : 'Todos los Productos'}
         </h1>
         <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
-          {filtered.length} produto{filtered.length !== 1 ? 's' : ''} encontrado{filtered.length !== 1 ? 's' : ''}
+          {filtered.length} producto{filtered.length !== 1 ? 's' : ''} encontrado{filtered.length !== 1 ? 's' : ''}
         </p>
       </div>
 
@@ -110,7 +110,7 @@ function ProductsContent() {
           {/* Sort */}
           <div className="flex items-center justify-between mb-5 gap-3">
             <div className="lg:hidden text-sm text-gray-500 dark:text-gray-400">
-              {filtered.length} produto{filtered.length !== 1 ? 's' : ''}
+              {filtered.length} producto{filtered.length !== 1 ? 's' : ''}
             </div>
             <div className="ml-auto">
               <ProductSort value={sort} onChange={setSort} />
@@ -119,8 +119,8 @@ function ProductsContent() {
 
           <ProductGrid
             products={filtered}
-            emptyMessage="Nenhum produto encontrado"
-            emptyDescription="Tente ajustar os seus filtros ou limpe a pesquisa para ver mais resultados."
+            emptyMessage="Ningún producto encontrado"
+            emptyDescription="Intenta ajustar los filtros o limpia la búsqueda para ver más resultados."
           />
         </div>
       </div>

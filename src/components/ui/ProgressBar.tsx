@@ -104,15 +104,15 @@ export function FreeShippingBar({
         <span className="text-xs text-gray-600 dark:text-gray-400">
           {isFree ? (
             <span className="font-medium text-primary-600">
-              Parabéns! Tem envio gratuito!
+              ¡Enhorabuena! ¡Tienes envío gratis!
             </span>
           ) : (
             <>
-              Faltam{' '}
+              Te faltan{' '}
               <span className="font-semibold text-primary-600">
                 {remaining.toFixed(2).replace('.', ',')}€
               </span>{' '}
-              para envio grátis
+              para envío gratis
             </>
           )}
         </span>

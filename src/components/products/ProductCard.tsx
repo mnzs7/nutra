@@ -21,9 +21,9 @@ interface ProductCardProps {
 }
 
 function getAddToCartLabel(name: string, stock: number, inCart: boolean): string {
-  if (stock === 0) return `${name} - Esgotado`
-  if (inCart) return `${name} já está no carrinho`
-  return `Adicionar ${name} ao carrinho`
+  if (stock === 0) return `${name} - Agotado`
+  if (inCart) return `${name} ya está en el carrito`
+  return `Añadir ${name} al carrito`
 }
 
 export function ProductCard({ product, className }: ProductCardProps) {
@@ -45,9 +45,9 @@ export function ProductCard({ product, className }: ProductCardProps) {
     e.stopPropagation()
     const added = toggleItem(product)
     if (added) {
-      toast.success('Adicionado aos favoritos', product.name)
+      toast.success('Añadido a favoritos', product.name)
     } else {
-      toast.info('Removido dos favoritos', product.name)
+      toast.info('Eliminado de favoritos', product.name)
     }
   }
 
@@ -61,14 +61,14 @@ export function ProductCard({ product, className }: ProductCardProps) {
     e.preventDefault()
     e.stopPropagation()
     if (!inCompare && isFull()) {
-      toast.warning('Limite atingido', 'Só pode comparar até 3 produtos. Remova um para adicionar outro.')
+      toast.warning('Límite alcanzado', 'Solo puedes comparar hasta 3 productos. Elimina uno para añadir otro.')
       return
     }
     const added = toggleCompare(product)
     if (added) {
-      toast.info('Adicionado ao comparador', `${product.name} - acesse /compare para ver`)
+      toast.info('Añadido al comparador', `${product.name} - ve a /compare para verlo`)
     } else {
-      toast.info('Removido do comparador', product.name)
+      toast.info('Eliminado del comparador', product.name)
     }
   }
 
@@ -110,12 +110,12 @@ export function ProductCard({ product, className }: ProductCardProps) {
           <div className="absolute top-2 left-2 flex flex-col gap-1">
             {product.isNew && (
               <Badge variant="info" size="sm">
-                Novo
+                Nuevo
               </Badge>
             )}
             {product.isBestSeller && (
               <Badge variant="warning" size="sm">
-                Mais Vendido
+                Más Vendido
               </Badge>
             )}
             {discount > 0 && (
@@ -136,7 +136,7 @@ export function ProductCard({ product, className }: ProductCardProps) {
           )}
           {product.stock === 0 && (
             <div className="absolute inset-0 flex items-center justify-center bg-black/40">
-              <Badge variant="danger">Esgotado</Badge>
+              <Badge variant="danger">Agotado</Badge>
             </div>
           )}
 
@@ -145,7 +145,7 @@ export function ProductCard({ product, className }: ProductCardProps) {
             <motion.button
               whileTap={{ scale: 0.9 }}
               onClick={handleWishlist}
-              aria-label={inWishlist ? `Remover ${product.name} dos favoritos` : `Adicionar ${product.name} aos favoritos`}
+              aria-label={inWishlist ? `Quitar ${product.name} de favoritos` : `Añadir ${product.name} a favoritos`}
               aria-pressed={inWishlist}
               className={cn(
                 'flex h-8 w-8 items-center justify-center rounded-lg shadow-md',
@@ -162,7 +162,7 @@ export function ProductCard({ product, className }: ProductCardProps) {
             <motion.button
               whileTap={{ scale: 0.9 }}
               onClick={handleCompare}
-              aria-label={inCompare ? `Remover ${product.name} do comparador` : `Adicionar ${product.name} ao comparador`}
+              aria-label={inCompare ? `Quitar ${product.name} del comparador` : `Añadir ${product.name} al comparador`}
               aria-pressed={inCompare}
               className={cn(
                 'flex h-8 w-8 items-center justify-center rounded-lg shadow-md',
@@ -180,7 +180,7 @@ export function ProductCard({ product, className }: ProductCardProps) {
               <Link
                 href={`/products/${product.slug}`}
                 onClick={(e) => e.stopPropagation()}
-                aria-label={`Ver detalhes de ${product.name}`}
+                aria-label={`Ver detalles de ${product.name}`}
                 className={cn(
                   'flex h-8 w-8 items-center justify-center rounded-lg shadow-md',
                   'bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-300',
@@ -247,16 +247,16 @@ export function ProductCard({ product, className }: ProductCardProps) {
               )}
             >
               <ShoppingCart className="h-3.5 w-3.5" aria-hidden="true" />
-              {product.stock === 0 ? 'Esgotado' : inCart ? 'No carrinho' : 'Adicionar'}
+              {product.stock === 0 ? 'Agotado' : inCart ? 'En el carrito' : 'Añadir'}
             </motion.button>
           </div>
 
           {/* Subscription pill */}
           {product.subscriptionAvailable && (
             <p className="mt-2 text-xs text-gray-500 dark:text-gray-400">
-              Subscrição:{' '}
+              Suscripción:{' '}
               <span className="font-medium text-primary-600 dark:text-primary-400">
-                {formatPrice(getSubscriptionPrice(product.price))}/mês (-15%)
+                {formatPrice(getSubscriptionPrice(product.price))}/mes (-15%)
               </span>
             </p>
           )}

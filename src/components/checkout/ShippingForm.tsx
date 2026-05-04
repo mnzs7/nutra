@@ -9,17 +9,17 @@ import { Button } from '@/components/ui/Button'
 import type { Address } from '@/lib/types'
 
 const shippingSchema = z.object({
-  firstName: z.string().min(2, 'Nome deve ter pelo menos 2 caracteres'),
-  lastName: z.string().min(2, 'Apelido deve ter pelo menos 2 caracteres'),
+  firstName: z.string().min(2, 'El nombre debe tener al menos 2 caracteres'),
+  lastName: z.string().min(2, 'Los apellidos deben tener al menos 2 caracteres'),
   email: z.string().email('Email inválido'),
-  phone: z.string().min(9, 'Telefone inválido').max(15),
-  street: z.string().min(5, 'Morada deve ter pelo menos 5 caracteres'),
-  number: z.string().min(1, 'Número obrigatório'),
+  phone: z.string().min(9, 'Teléfono inválido').max(15),
+  street: z.string().min(5, 'La dirección debe tener al menos 5 caracteres'),
+  number: z.string().min(1, 'Número obligatorio'),
   complement: z.string().optional(),
-  postalCode: z.string().regex(/^\d{4}-\d{3}$/, 'Código postal inválido (ex: 1200-001)'),
-  city: z.string().min(2, 'Cidade obrigatória'),
-  state: z.string().min(2, 'Distrito obrigatório'),
-  country: z.string().default('Portugal'),
+  postalCode: z.string().regex(/^\d{5}$/, 'Código postal inválido (ej: 28001)'),
+  city: z.string().min(2, 'Ciudad obligatoria'),
+  state: z.string().min(2, 'Provincia obligatoria'),
+  country: z.string().default('España'),
 })
 
 type ShippingFormData = z.infer<typeof shippingSchema>
@@ -47,38 +47,38 @@ export function ShippingForm({ onSubmit, defaultValues }: ShippingFormProps) {
       postalCode: defaultValues?.postalCode ?? '',
       city: defaultValues?.city ?? '',
       state: defaultValues?.state ?? '',
-      country: 'Portugal',
+      country: 'España',
     },
   })
 
   const handleFormSubmit = (data: ShippingFormData) => {
-    onSubmit({ ...data, country: 'Portugal' })
+    onSubmit({ ...data, country: 'España' })
   }
 
   return (
     <form onSubmit={handleSubmit(handleFormSubmit)} noValidate className="space-y-6">
       <div>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-1">
-          Morada de Entrega
+          Dirección de Entrega
         </h2>
         <p className="text-sm text-gray-500 dark:text-gray-400">
-          Onde devemos entregar a sua encomenda?
+          ¿Dónde debemos entregar tu pedido?
         </p>
       </div>
 
       {/* Name row */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <Input
-          label="Nome"
-          placeholder="João"
+          label="Nombre"
+          placeholder="Carlos"
           required
           {...register('firstName')}
           error={errors.firstName?.message}
           autoComplete="given-name"
         />
         <Input
-          label="Apelido"
-          placeholder="Silva"
+          label="Apellidos"
+          placeholder="García"
           required
           {...register('lastName')}
           error={errors.lastName?.message}
@@ -91,16 +91,16 @@ export function ShippingForm({ onSubmit, defaultValues }: ShippingFormProps) {
         <Input
           label="Email"
           type="email"
-          placeholder="joao@exemplo.pt"
+          placeholder="carlos@ejemplo.es"
           required
           {...register('email')}
           error={errors.email?.message}
           autoComplete="email"
         />
         <Input
-          label="Telefone"
+          label="Teléfono"
           type="tel"
-          placeholder="912 345 678"
+          placeholder="612 345 678"
           required
           {...register('phone')}
           error={errors.phone?.message}
@@ -111,8 +111,8 @@ export function ShippingForm({ onSubmit, defaultValues }: ShippingFormProps) {
       {/* Address */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         <Input
-          label="Rua / Avenida"
-          placeholder="Rua da Saúde"
+          label="Calle / Avenida"
+          placeholder="Calle Mayor"
           required
           {...register('street')}
           error={errors.street?.message}
@@ -121,7 +121,7 @@ export function ShippingForm({ onSubmit, defaultValues }: ShippingFormProps) {
         />
         <Input
           label="Número"
-          placeholder="123"
+          placeholder="42"
           required
           {...register('number')}
           error={errors.number?.message}
@@ -130,7 +130,7 @@ export function ShippingForm({ onSubmit, defaultValues }: ShippingFormProps) {
 
       <Input
         label="Complemento"
-        placeholder="Apartamento, andar, etc. (opcional)"
+        placeholder="Piso, puerta, escalera, etc. (opcional)"
         {...register('complement')}
         error={errors.complement?.message}
         autoComplete="address-line2"
@@ -139,15 +139,15 @@ export function ShippingForm({ onSubmit, defaultValues }: ShippingFormProps) {
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         <Input
           label="Código Postal"
-          placeholder="1200-001"
+          placeholder="28001"
           required
           {...register('postalCode')}
           error={errors.postalCode?.message}
           autoComplete="postal-code"
         />
         <Input
-          label="Cidade"
-          placeholder="Lisboa"
+          label="Ciudad"
+          placeholder="Madrid"
           required
           {...register('city')}
           error={errors.city?.message}
@@ -157,8 +157,8 @@ export function ShippingForm({ onSubmit, defaultValues }: ShippingFormProps) {
       </div>
 
       <Input
-        label="Distrito"
-        placeholder="Lisboa"
+        label="Provincia"
+        placeholder="Madrid"
         required
         {...register('state')}
         error={errors.state?.message}
@@ -167,7 +167,7 @@ export function ShippingForm({ onSubmit, defaultValues }: ShippingFormProps) {
 
       <div className="flex flex-col sm:flex-row gap-3 items-center justify-between pt-2">
         <p className="text-xs text-gray-500 dark:text-gray-400">
-          Os seus dados são protegidos e nunca partilhados com terceiros.
+          Tus datos están protegidos y nunca se comparten con terceros.
         </p>
         <Button
           type="submit"
@@ -176,7 +176,7 @@ export function ShippingForm({ onSubmit, defaultValues }: ShippingFormProps) {
           rightIcon={<ChevronRight className="h-5 w-5" />}
           className="sm:shrink-0"
         >
-          Continuar para Pagamento
+          Continuar al Pago
         </Button>
       </div>
     </form>

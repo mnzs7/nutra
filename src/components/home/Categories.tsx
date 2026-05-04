@@ -18,10 +18,10 @@ export function Categories() {
             id="categories-heading"
             className="text-3xl font-black text-gray-900 dark:text-white mb-3"
           >
-            Categorias de Produtos
+            Categorías de Productos
           </h2>
           <p className="text-gray-500 dark:text-gray-400 max-w-xl mx-auto">
-            Encontre os suplementos ideais para os seus objetivos de saúde e bem-estar.
+            Encuentra los suplementos ideales para tus objetivos de salud y bienestar.
           </p>
         </div>
 
@@ -37,7 +37,7 @@ export function Categories() {
               <Link
                 href={`/products?category=${cat.id}`}
                 className="group flex flex-col items-center gap-3 p-4 rounded-2xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 hover:border-primary-300 dark:hover:border-primary-600 hover:shadow-md transition-all duration-300 text-center focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500"
-                aria-label={`Ver produtos de ${cat.label}`}
+                aria-label={`Ver productos de ${cat.label}`}
               >
                 <div
                   className={`flex h-14 w-14 items-center justify-center rounded-2xl text-2xl ${cat.color} transition-transform group-hover:scale-110`}
@@ -50,7 +50,7 @@ export function Categories() {
                     {cat.label}
                   </p>
                   <p className="text-xs text-gray-400 dark:text-gray-500 mt-0.5">
-                    {getCategoryCount(cat.id)} produtos
+                    {getCategoryCount(cat.id)} productos
                   </p>
                 </div>
               </Link>
@@ -63,7 +63,7 @@ export function Categories() {
             href="/products"
             className="inline-flex items-center gap-2 text-sm font-semibold text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 rounded-lg px-2 py-1"
           >
-            Ver todos os produtos
+            Ver todos los productos
             <ArrowRight className="h-4 w-4" aria-hidden="true" />
           </Link>
         </div>

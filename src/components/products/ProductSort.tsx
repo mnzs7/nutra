@@ -5,12 +5,12 @@ import { cn } from '@/lib/utils/cn'
 import type { SortOption } from '@/lib/types'
 
 const sortOptions: { value: SortOption; label: string }[] = [
-  { value: 'relevance', label: 'Relevância' },
-  { value: 'price_asc', label: 'Preço: crescente' },
-  { value: 'price_desc', label: 'Preço: decrescente' },
-  { value: 'rating_desc', label: 'Melhor avaliação' },
-  { value: 'newest', label: 'Mais recentes' },
-  { value: 'bestseller', label: 'Mais vendidos' },
+  { value: 'relevance', label: 'Relevancia' },
+  { value: 'price_asc', label: 'Precio: menor a mayor' },
+  { value: 'price_desc', label: 'Precio: mayor a menor' },
+  { value: 'rating_desc', label: 'Mejor valorado' },
+  { value: 'newest', label: 'Más recientes' },
+  { value: 'bestseller', label: 'Más vendidos' },
 ]
 
 interface ProductSortProps {

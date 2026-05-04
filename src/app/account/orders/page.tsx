@@ -18,17 +18,17 @@ const mockOrders = [
       { name: 'Vitamina D3 + K2 Premium', qty: 1, price: 19.99 },
     ],
     total: 119.79,
-    trackingCode: 'CTT123456789PT',
+    trackingCode: 'CORREOS123456789ES',
   },
   {
     id: 'VS5E6F7G8H',
     date: '2024-02-15',
     status: 'shipped' as const,
     items: [
-      { name: 'Ómega-3 Ultra Pure TG 1200mg', qty: 1, price: 29.90 },
+      { name: 'Omega-3 Ultra Pure TG 1200mg', qty: 1, price: 29.90 },
     ],
     total: 29.90,
-    trackingCode: 'CTT987654321PT',
+    trackingCode: 'CORREOS987654321ES',
   },
   {
     id: 'VS9I0J1K2L',
@@ -36,7 +36,7 @@ const mockOrders = [
     status: 'delivered' as const,
     items: [
       { name: 'Melatonina Complex Sleep 5mg', qty: 2, price: 24.90 },
-      { name: 'Colagénio Marinho Hidrolisado', qty: 1, price: 32.90 },
+      { name: 'Colágeno Marino Hidrolizado', qty: 1, price: 32.90 },
     ],
     total: 82.70,
   },
@@ -44,13 +44,13 @@ const mockOrders = [
 
 const statusConfig = {
   pending: {
-    label: 'Pendente',
+    label: 'Pendiente',
     variant: 'warning' as const,
     Icon: Clock,
     color: 'text-amber-600',
   },
   processing: {
-    label: 'Em processamento',
+    label: 'En proceso',
     variant: 'info' as const,
     Icon: Clock,
     color: 'text-blue-600',
@@ -62,7 +62,7 @@ const statusConfig = {
     color: 'text-blue-600',
   },
   delivered: {
-    label: 'Entregue',
+    label: 'Entregado',
     variant: 'success' as const,
     Icon: CheckCircle2,
     color: 'text-primary-600',
@@ -82,15 +82,15 @@ export default function OrdersPage() {
         <div className="flex items-center gap-4 mb-8">
           <Link href="/account">
             <Button variant="ghost" size="sm" leftIcon={<ArrowLeft className="h-4 w-4" />}>
-              Voltar
+              Volver
             </Button>
           </Link>
           <div>
             <h1 className="text-2xl font-black text-gray-900 dark:text-white">
-              As Minhas Encomendas
+              Mis Pedidos
             </h1>
             <p className="text-sm text-gray-500 dark:text-gray-400 mt-0.5">
-              {mockOrders.length} encomendas no total
+              {mockOrders.length} pedidos en total
             </p>
           </div>
         </div>
@@ -101,13 +101,13 @@ export default function OrdersPage() {
               <Package className="h-8 w-8 text-gray-400" aria-hidden="true" />
             </div>
             <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-2">
-              Ainda não tem encomendas
+              Aún no tienes pedidos
             </h2>
             <p className="text-gray-500 dark:text-gray-400 mb-6">
-              As suas encomendas aparecerão aqui depois da primeira compra.
+              Tus pedidos aparecerán aquí después de tu primera compra.
             </p>
             <Link href="/products">
-              <Button>Explorar Produtos</Button>
+              <Button>Explorar Productos</Button>
             </Link>
           </div>
         ) : (
@@ -132,10 +132,10 @@ export default function OrdersPage() {
                       </div>
                       <div>
                         <p className="text-sm font-bold text-gray-900 dark:text-white">
-                          Encomenda #{order.id}
+                          Pedido #{order.id}
                         </p>
                         <p className="text-xs text-gray-500 dark:text-gray-400">
-                          {new Date(order.date).toLocaleDateString('pt-PT', {
+                          {new Date(order.date).toLocaleDateString('es-ES', {
                             year: 'numeric',
                             month: 'long',
                             day: 'numeric',
@@ -176,7 +176,7 @@ export default function OrdersPage() {
                     <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
                       {order.trackingCode ? (
                         <div className="text-sm">
-                          <span className="text-gray-500 dark:text-gray-400">Rastreio: </span>
+                          <span className="text-gray-500 dark:text-gray-400">Seguimiento: </span>
                           <button className="font-mono font-medium text-primary-600 dark:text-primary-400 hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 rounded">
                             {order.trackingCode}
                           </button>
@@ -187,11 +187,11 @@ export default function OrdersPage() {
 
                       <div className="flex gap-2">
                         <Button variant="outline" size="sm">
-                          Detalhes
+                          Detalles
                         </Button>
                         {order.status === 'delivered' && (
                           <Button variant="secondary" size="sm">
-                            Comprar novamente
+                            Comprar de nuevo
                           </Button>
                         )}
                       </div>
