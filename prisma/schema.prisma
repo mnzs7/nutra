@@ -6,7 +6,7 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
+  provider = "postgresql"
 }
 
 // ============================================================
@@ -94,7 +94,7 @@ model Order {
   id        String   @id @default(cuid())
   userId    String
   status    String   @default("pending")
-  items     String   // JSON stored as string (SQLite has no native JSON type)
+  items     String   // JSON array serialised as text
   total     Float
   createdAt DateTime @default(now())
 
